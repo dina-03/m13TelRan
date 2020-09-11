@@ -1,12 +1,10 @@
 package de.telran.data;
-import java.util.Arrays;
-import java.util.Scanner;
-public class ScannerProject {
-    static Scanner scanner = new Scanner(System.in);
+
+public class ScannerProjectArray {
+
     public static int[] fillArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            System.out.println("Enter number, please");
-            array[i] = scanner.nextInt();
+            array[i] = UserInteraction.getArrayElement();
         }
         return array;
     }
@@ -30,19 +28,5 @@ public class ScannerProject {
             }
         }
         return newArray;
-    }
-
-    public static void printResult(int[] numbers, boolean check, int number) {
-        if (check) {
-            System.out.println("Yes!");
-            System.out.println(Arrays.toString(getArrayWithoutDeleteNumber(numbers, number)));
-        } else {
-            System.out.println("No.");
-            System.out.println("Try again");
-        }
-    }
-
-    public static void closeScanner() {
-        scanner.close();
     }
 }
