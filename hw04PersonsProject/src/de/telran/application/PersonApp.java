@@ -11,6 +11,12 @@ public class PersonApp {
         Person person4 = new Person("Masha", 23);
         Person person5 = new Person("Anastasiya", 19);
 
+        /*Person person1 = new Person("Jakob", 15);
+        Person person2 = new Person("Jan", 3);
+        Person person3 = new Person("Ekaterina", 10);
+        Person person4 = new Person("Olya", 4);
+        Person person5 = new Person("Petya", 7);*/
+
         Person[] group = {person1, person2, person3, person4, person5};
         Person.displayPersons(group);
         System.out.println("-------");
