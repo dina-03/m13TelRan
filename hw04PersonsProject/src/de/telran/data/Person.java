@@ -63,7 +63,6 @@ public class Person {
     }
 
     public static Person findLongestName(Person[] group, int longestName) {
-
         Person n = group[0];
         for (Person person : group) {
             if (person.getName().length() == longestName)
