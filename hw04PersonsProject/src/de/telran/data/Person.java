@@ -51,7 +51,6 @@ public class Person {
                 p = person;
             break;
         }
-
         return p;
     }
 
@@ -90,9 +89,9 @@ public class Person {
         System.out.println("The oldest of the group " + Person.getOldestPerson(persons));
     }
 
-    public static Person getYoungestPerson(Person[] persons) {
+    /*public static Person getYoungestPerson(Person[] persons) {
         return Arrays.stream(persons).min(Comparator.comparing(Person::getAge)).get();
-    }
+    }*/
 
     public static void displayYoungestPerson(Person[] persons) {
         System.out.println("The youngest of the group " + Arrays.stream(persons).min(Comparator.comparing(person ->
