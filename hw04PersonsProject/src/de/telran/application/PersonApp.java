@@ -1,16 +1,22 @@
 package de.telran.application;
 
+import de.telran.data.Address;
 import de.telran.data.Person;
 
 public class PersonApp {
     public static void main(String[] args) {
-        Person person1 = new Person("Vasya", 30, 1.70);
+        Address address1 = new Address("Berlin", "Kudamm",25);
+        Address address2 = new Address("Hamburg", "FranzStr", 23);
+        Address address3 = new Address("Moscow", "Petrovka", 38);
+        Person person1 = new Person("Vasya", 30, 1.70, address2);
         person1.setName("Vasiliy");
-        Person person2 = new Person("Alex", 44, 1.68);
-        Person person3 = new Person("Katya", 18, 1.55);
-        Person person4 = new Person("Masha", 23, 1.60);
-        Person person5 = new Person("Anastasiya", 19, 1.65);
-        Person person6 = new Person("Katya", 18, 1.55);
+        Person person2 = new Person("Alex", 44, 1.68, new Address("London", "Becker", 33));
+        Person person3 = new Person("Katya", 18, 1.55, address1);
+        Person person4 = new Person("Masha", 23, 1.60, address3);
+        Person person5 = new Person("Anastasiya", 19, 1.65, address3);
+        Person person6 = new Person("Katya", 18, 1.55, address3);
+
+        //Address address4 = person2.g
         //System.out.println(person3.equals(person6));
         /*Person person1 = new Person("Jakob", 15);
         Person person2 = new Person("Jan", 3);
@@ -20,8 +26,11 @@ public class PersonApp {
         Person[] group = {person1, person2, person3, person4, person5, person6};
         Person.displayPersons(group);
         split();
-        System.out.println("The oldest of the group " + Person.getOldestPerson(group));
-        System.out.println("The longest name in the" + Person.getLongestNamePerson(group));
+      /*  System.out.println("The oldest of the group " + Person.getOldestPerson(group));
+        System.out.println("The longest name in the" + Person.getLongestNamePerson(group));*/
+
+        System.out.println(Person.findPersonByAddress(group, new Address("Berlin", "Kudamm", 25)));
+
        /* split();
         Person.sortPersonByAge(group);
         Person.displayPersons(group);

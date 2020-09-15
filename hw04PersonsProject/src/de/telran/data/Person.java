@@ -6,11 +6,14 @@ public class Person {
     private String name;
     private int age;
     private double growth;
+    private Address address;
 
-    public Person(String name, int age, double growth) {
+
+    public Person(String name, int age, double growth, Address address) {
         this.name = name;
         this.age = age;
         this.growth = growth;
+        this.address = address;
     }
 
     public String getName() {
@@ -32,6 +35,10 @@ public class Person {
             System.out.println("wrong age");
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -40,19 +47,21 @@ public class Person {
             return false;
         Person person = (Person) o;
         return age == person.age &&
-                name.equals(person.name);
+                Double.compare(person.growth, growth) == 0 &&
+                name.equals(person.name) &&
+                address.equals(person.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age);
+        return Objects.hash(name, age, growth, address);
     }
 
     @Override
     public String toString() {
         return "\"Person Name\": " + name +
                 ", age: " + age +
-                ", growth: " + growth +
+                ", growth: " + growth + "\n" + address +
                 ';';
     }
 
@@ -75,8 +84,8 @@ public class Person {
     public static Person getLongestNamePerson(Person[] persons) {
         Person longestName = persons[0];
         for (int i = 0; i < persons.length; i++) {
-            if (persons[i].name.length() > longestName.name.length()){
-               longestName = persons[i];
+            if (persons[i].name.length() > longestName.name.length()) {
+                longestName = persons[i];
             }
         }
         return longestName;
@@ -118,10 +127,10 @@ public class Person {
         return 0;
     }
 
-    public static void sortPersonByGrowth(Person[] persons){
+    public static void sortPersonByGrowth(Person[] persons) {
         for (int i = 0; i < persons.length - 1; i++) {
             for (int j = 0; j < (persons.length - 1) - i; j++) {
-                if (persons[j].compareToPersonByGrowth(persons[j + 1]) > 0){
+                if (persons[j].compareToPersonByGrowth(persons[j + 1]) > 0) {
                     Person temp = persons[j + 1];
                     persons[j + 1] = persons[j];
                     persons[j] = temp;
@@ -155,6 +164,27 @@ public class Person {
 
     }
 
+    public static Person findPersonByAddress(Person[] persons, Address address) {
+        for (Person p : persons) {
+            if (address.equals(p.address)) {
+                return p;
+            }
+        }
+        // System.out.println("Person not found");
+        return null;
+    }
+
+    public static void displayPersonByAddress(Person[] persons, Address address) {
+        boolean flag = false;
+        for (Person p : persons) {
+            if (address.equals(p.address)) {
+                System.out.println(p);
+                flag = true;
+            }
+        }
+        if (!flag)
+            System.out.println("Person not found");
+    }
 
 /*
     public static Person findOldestPerson(Person[] group, int maxAge) {
