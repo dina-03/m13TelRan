@@ -15,26 +15,22 @@ public class PersonApp {
         Person[] group = {person1, person2, person3, person4, person5, person6};
 
         Person.displayPersons(group);
-        split();
+        Person.split();
         Person.displayOldestPerson(group);
         Person.displayLongestNamePerson(group);
         Person.displaySmallestPerson(group);
-        split();
+        Person.split();
         System.out.println("sort by growth:");
         Person.sortPersonByGrowth(group);
         Person.displayPersons(group);
-        split();
+        Person.split();
         System.out.println("sort by age:");
         Person.sortPersonByAge(group);
         Person.displayPersons(group);
-        split();
+        Person.split();
         System.out.println("sort by Name: ");
         Person.sortPersonByName(group);
         Person.displayPersons(group);
 
-    }
-
-    public static void split() {
-        System.out.println("--------");
     }
 }

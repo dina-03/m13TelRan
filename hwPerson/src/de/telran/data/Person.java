@@ -90,12 +90,12 @@ public class Person {
         System.out.println("The longest Persons name in the " + getLongestNamePerson(persons));
     }
 
-    private double compareToPersonByGrowth(Person persons) {
+    private int compareToPersonByGrowth(Person persons) {
         if (this.growth > persons.growth)
             return 1;
         else if (this.growth < persons.growth)
             return -1;
-        return 0.0;
+        return 0;
     }
 
     public static void sortPersonByGrowth(Person[] persons) {
@@ -141,6 +141,9 @@ public class Person {
             }
         }
 
+    }
+    public static void split() {
+        System.out.println("--------");
     }
 
 }
