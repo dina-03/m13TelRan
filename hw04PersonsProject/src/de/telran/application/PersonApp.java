@@ -16,13 +16,9 @@ public class PersonApp {
         Person person5 = new Person("Anastasiya", 19, 1.65, address3);
         Person person6 = new Person("Katya", 18, 1.55, address3);
 
-        //Address address4 = person2.g
+        Address address4 = person2.getAddress();
         //System.out.println(person3.equals(person6));
-        /*Person person1 = new Person("Jakob", 15);
-        Person person2 = new Person("Jan", 3);
-        Person person3 = new Person("Ekaterina", 10);
-        Person person4 = new Person("Olya", 4);
-        Person person5 = new Person("Petya", 7);*/
+
         Person[] group = {person1, person2, person3, person4, person5, person6};
         Person.displayPersons(group);
         split();
@@ -30,7 +26,7 @@ public class PersonApp {
         System.out.println("The longest name in the" + Person.getLongestNamePerson(group));*/
 
         System.out.println(Person.findPersonByAddress(group, new Address("Berlin", "Kudamm", 25)));
-
+        System.out.println(Person.findPersonByAddress(group, new Address("Moscow", "Petrovka", 38)));
        /* split();
         Person.sortPersonByAge(group);
         Person.displayPersons(group);
@@ -58,6 +54,7 @@ public class PersonApp {
         Person.displayOldestPerson(group);
         Person.displayYoungestPerson(group);
         Person.displayLongestNamePerson(group);*/
+
     }
 
     public static void split() {
