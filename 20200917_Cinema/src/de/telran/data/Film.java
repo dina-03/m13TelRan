@@ -74,9 +74,9 @@ public class Film {
     @Override
     public String toString() {
         return "Film: " + title +
-                ", data: " + data +
-                ", genre: " + genre +
-                ", cinemas: " + Arrays.toString(cinemas) +
+                " data: " + data +
+                " genre: " + genre +
+                " cinemas: " + Arrays.toString(cinemas) +
                 ';';
     }
 
@@ -84,18 +84,5 @@ public class Film {
         for (Cinema c : cinemas) {
             System.out.println(c);
         }
-    }
-    public void myToString() {
-        System.out.println("--------------------");
-        System.out.println("Film: " + title + " (" + genre + ")");
-        System.out.println("--------------------");
-        System.out.println("Is on in the following cinemas: ");
-        outPrint();
-    }
-    public void outPrint (){
-        for (Cinema i : cinemas) {
-            System.out.println(i);
-        }
-        System.out.println();
     }
 }

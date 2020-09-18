@@ -43,19 +43,12 @@ public class CinemaApp {
         /*schedule.displayFilmsByCinema("Stella");
         System.out.println("*******************");
         schedule.displayFilmsByCinema("Astra");*/
-        schedule.displayFilmsByDate(LocalDate.of(2020, 10, 18), "Thalia");
+
+        schedule.displayFilmsByDate(LocalDate.of(2020, 10, 18));
+        schedule.displayFilmsByDate(LocalDate.of(2020,12,12));
+        System.out.println("----");
         schedule.displayFilmsByGenre( Genre.ACTION);
         schedule.displayFilmsByGenre(Genre.CRIME);
-        schedule.displayFilmsByDate(LocalDate.of(2020,12,12), "Astra");
-        System.out.println("----");
         schedule.displayFilmsByGenre(Genre.DRAMA);
-       /* Film[] films = {film1, film2, film3, film4, film5,film6,film7,film8};
-        schedule.displayFilmsByDate(films, LocalDate.of(2020, 9, 20));
-        schedule.displayFilmsByDate(films, LocalDate.of(2020, 10, 18));
-        schedule.displayFilmsByDate(films, LocalDate.of(2020, 9, 17));
-
-        schedule.displayFilmsByGenre(films, Genre.ADVENTURE);
-        schedule.displayFilmsByGenre(films, Genre.DRAMA);
-        schedule.displayFilmsByGenre(films, Genre.THRILLER);*/
     }
 }

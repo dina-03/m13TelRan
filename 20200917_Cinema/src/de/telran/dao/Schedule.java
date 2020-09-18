@@ -5,6 +5,7 @@ import de.telran.data.Film;
 import de.telran.data.Genre;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Schedule {
     private Film[] films;
@@ -51,62 +52,30 @@ public class Schedule {
                 flag = true;
             }
         }
-            System.out.println((flag) ? "": "no information"); // if(!flag)
+        System.out.println((flag) ? "" : "no information"); // if(!flag)
     }
 
-    public void displayFilmsByDate(LocalDate date, String cinema){
-        System.out.println("You can watch in " + cinema);
+    public void displayFilmsByDate(LocalDate date) {
+        System.out.println("You can watch in " + date);
         boolean flag = false;
         for (int i = 0; i < size; i++) {
-            if (Cinema.isCinemaInArray(cinema, films[i].getCinemas())) {
-                if (films[i].getData().equals(date)) {
-                    flag = true;
-                    System.out.println(films[i].getData() + ", " + films[i].getGenre() + ", " + films[i].getTitle());
-                    System.out.println("------");
-                }
+            if (films[i].getData().equals(date)) {
+                flag = true;
+                System.out.println(films[i].getGenre() + " " + films[i].getTitle());
+                films[i].displayCinema();
+                System.out.println("------");
             }
         }
         System.out.println((flag) ? "" : "no information");
     }
 
-    public void displayFilmsByGenre(Genre genre){
-        //System.out.println("In cinema " + cinema);
+    public void displayFilmsByGenre(Genre genre) {
         for (int i = 0; i < size; i++) {
-                if (films[i].getGenre().equals(genre)) {
-                    System.out.println(films[i].getGenre() + ", " + films[i].getTitle() + ", " + films[i].getData());
-                    System.out.println("-------");
-                }
-        }
-    }
-
-    /*public void displayFilmsByDate(Film[] films, LocalDate date) {
-        System.out.println("--------------------");
-        System.out.println(date + " are on: ");
-        boolean flag = false;
-        for (int i = 0; i < films.length; i++) {
-            if (films[i].getData().compareTo(date) == 0) {
-                films[i].myToString();
-                flag = true;
-            }
-        }
-        if (!flag) {
-            System.out.println("Movies are not found \n");
-        }
-    }
-
-    public void displayFilmsByGenre(Film[] films, Genre genre){
-        System.out.println("--------------------");
-        System.out.println("Movies in genre " + genre + ": ");
-        boolean flag = false;
-        for (int i = 0; i < films.length; i++) {
             if (films[i].getGenre().equals(genre)) {
-                films[i].myToString();
-                flag = true;
+                System.out.println(films[i].getGenre() + " " + films[i].getTitle() + " " + films[i].getData());
+                films[i].displayCinema();
+                System.out.println("-------");
             }
         }
-        if (!flag) {
-            System.out.println("Movies in this genre are not found \n");
-        }
-    }*/
-
+    }
 }

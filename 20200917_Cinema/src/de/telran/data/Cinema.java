@@ -49,9 +49,9 @@ public class Cinema {
 
     @Override
     public String toString() {
-        return "Cinema " + name +
-                ", address: " + address +
-                ';';
+        return "Cinema " + name + "\n" +
+                "address: " + address +
+                ';' + "\n";
     }
 
     public static boolean isCinemaInArray(String name, Cinema[] cinemas){
