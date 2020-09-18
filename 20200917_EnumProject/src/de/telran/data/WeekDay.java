@@ -9,6 +9,10 @@ public class WeekDay {
 
     public static WeekDay MONDAY = new WeekDay("monday");
     public static WeekDay TUESDAY = new WeekDay("tuesday");
+    public static WeekDay WEDNESDAY = new WeekDay("wednesday");
+    public static WeekDay THURSDAY = new WeekDay("thursday");
+    public static WeekDay FRIDAY = new WeekDay("friday");
+    public static WeekDay SATURDAY = new WeekDay("saturday");
     public static WeekDay SUNDAY = new WeekDay("sunday");
 
     @Override

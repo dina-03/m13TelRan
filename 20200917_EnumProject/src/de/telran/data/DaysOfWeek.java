@@ -1,6 +1,6 @@
 package de.telran.data;
 
-public enum DayOfWeek {
+public enum DaysOfWeek {
     MONDAY("mon"),
     TUESDAY("tue"),
     WEDNESDAY("wed"),
@@ -15,13 +15,13 @@ public enum DayOfWeek {
         return title;
     }
 
-    DayOfWeek(String title) {
+    DaysOfWeek(String title) {
         this.title = title;
     }
 
     @Override
     public String toString() {
-        return "DayOfWeek: " + title;
+        return title;
     }
     public void sayHello(){
         System.out.println("Hello!");
