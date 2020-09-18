@@ -49,7 +49,7 @@ public class Cinema {
 
     @Override
     public String toString() {
-        return "Cinema" + name +
+        return "Cinema " + name +
                 ", address: " + address +
                 ';';
     }

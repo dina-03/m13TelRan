@@ -85,4 +85,17 @@ public class Film {
             System.out.println(c);
         }
     }
+    public void myToString() {
+        System.out.println("--------------------");
+        System.out.println("Film: " + title + " (" + genre + ")");
+        System.out.println("--------------------");
+        System.out.println("Is on in the following cinemas: ");
+        outPrint();
+    }
+    public void outPrint (){
+        for (Cinema i : cinemas) {
+            System.out.println(i);
+        }
+        System.out.println();
+    }
 }

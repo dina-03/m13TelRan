@@ -69,18 +69,44 @@ public class Schedule {
         System.out.println((flag) ? "" : "no information");
     }
 
-    public void displayFilmsByGenre(String cinema, Genre genre){
-        System.out.println("In cinema " + cinema);
-        boolean flag = false;
+    public void displayFilmsByGenre(Genre genre){
+        //System.out.println("In cinema " + cinema);
         for (int i = 0; i < size; i++) {
-            if (Cinema.isCinemaInArray(cinema, films[i].getCinemas())) {
                 if (films[i].getGenre().equals(genre)) {
-                    flag = true;
                     System.out.println(films[i].getGenre() + ", " + films[i].getTitle() + ", " + films[i].getData());
                     System.out.println("-------");
                 }
+        }
+    }
+
+    /*public void displayFilmsByDate(Film[] films, LocalDate date) {
+        System.out.println("--------------------");
+        System.out.println(date + " are on: ");
+        boolean flag = false;
+        for (int i = 0; i < films.length; i++) {
+            if (films[i].getData().compareTo(date) == 0) {
+                films[i].myToString();
+                flag = true;
             }
         }
-        System.out.println((flag) ? "" : "no information");
+        if (!flag) {
+            System.out.println("Movies are not found \n");
+        }
     }
+
+    public void displayFilmsByGenre(Film[] films, Genre genre){
+        System.out.println("--------------------");
+        System.out.println("Movies in genre " + genre + ": ");
+        boolean flag = false;
+        for (int i = 0; i < films.length; i++) {
+            if (films[i].getGenre().equals(genre)) {
+                films[i].myToString();
+                flag = true;
+            }
+        }
+        if (!flag) {
+            System.out.println("Movies in this genre are not found \n");
+        }
+    }*/
+
 }
