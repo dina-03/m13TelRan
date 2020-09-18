@@ -70,6 +70,7 @@ public class Schedule {
     }
 
     public void displayFilmsByGenre(Genre genre) {
+        System.out.println("you can watch the following genres: ");
         for (int i = 0; i < size; i++) {
             if (films[i].getGenre().equals(genre)) {
                 System.out.println(films[i].getGenre() + " " + films[i].getTitle() + " " + films[i].getData());
