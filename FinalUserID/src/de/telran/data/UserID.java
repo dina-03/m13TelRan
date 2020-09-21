@@ -7,10 +7,6 @@ public class UserID {
         this.ID_NUMBER = ID_NUMBER;
     }
 
-    public int getID_NUMBER() {
-        return ID_NUMBER;
-    }
-
     @Override
     public String toString() {
         return ", ID: 00" + ID_NUMBER +
