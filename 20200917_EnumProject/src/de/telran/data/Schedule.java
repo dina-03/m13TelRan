@@ -5,16 +5,8 @@ import java.util.Arrays;
 public class Schedule {
     private DaysOfWeek[] week;
 
-    public Schedule(DaysOfWeek[] week) {
-        this.week = week;
-    }
-
-    public DaysOfWeek[] getWeek() {
-        return week;
-    }
-
-    public void setWeek(DaysOfWeek[] week) {
-        this.week = week;
+    public Schedule() {
+        this.week = DaysOfWeek.values();
     }
 
     @Override
@@ -40,7 +32,7 @@ public class Schedule {
         }
     }
 
-    public void getMenu() {
+   /* public void getMenu() {
         for (DaysOfWeek days : week) {
             if (days.equals(DaysOfWeek.MONDAY)) {
                 System.out.println(DaysOfWeek.MONDAY.getTitle() + ":" + " Spaghetti");
@@ -63,31 +55,31 @@ public class Schedule {
             if (days.equals(DaysOfWeek.SUNDAY))
                 System.out.println(DaysOfWeek.SUNDAY.getTitle() + ":" + " Borsch");
         }
-    }
+    }*/
 
-   /* public void getMenu(){
-        switch (Arrays.toString(week)){
-            case "MONDAY":
+    public void getMenu(DaysOfWeek week){
+        switch (week){
+            case MONDAY:
                 System.out.println("Spaghetti");
                 break;
-            case "TUESDAY":
+            case TUESDAY:
                 System.out.println("Pizza");
                 break;
-            case "WEDNESDAY":
+            case WEDNESDAY:
                 System.out.println("Chicken");
                 break;
-            case "THURSDAY":
+            case THURSDAY:
                 System.out.println("Fish");
                 break;
-            case "FRIDAY":
+            case FRIDAY:
                 System.out.println("Soup");
                 break;
-            case "SATURDAY":
+            case SATURDAY:
                 System.out.println("Olivie");
                 break;
-            case "SUNDAY":
+            case SUNDAY:
                 System.out.println("Borsch");
                 break;
         }
-    }*/
+    }
 }

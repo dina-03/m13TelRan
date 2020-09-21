@@ -34,7 +34,7 @@ public class EnumApp {
         schedule2.getMenu();*/
 
 
-        Schedule schedule = new Schedule(weeks);
+        Schedule schedule = new Schedule();
 
         schedule.wakeUp(DaysOfWeek.THURSDAY);
         schedule.wakeUp(DaysOfWeek.FRIDAY);
@@ -46,7 +46,7 @@ public class EnumApp {
         for (Schedule s : schedules) {
             s.getMenu();
         }*/
-        schedule.getMenu();
+        schedule.getMenu(DaysOfWeek.MONDAY);
     }
 
 }
