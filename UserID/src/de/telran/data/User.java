@@ -3,11 +3,11 @@ package de.telran.data;
 public class User {
     private String name;
     private final int userID;
-    private static int userIDNumber = 1;
+    private static int userIDNumber = 0;
 
     public User(String name) {
         this.name = name;
-        userID = userIDNumber++;
+        userID = ++userIDNumber;
     }
 
     public String getName() {
