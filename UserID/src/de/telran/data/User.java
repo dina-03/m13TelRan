@@ -2,10 +2,12 @@ package de.telran.data;
 
 public class User {
     private String name;
-    private static int userID;
+    private final int userID;
+    private static int userIDNumber = 1;
 
     public User(String name) {
         this.name = name;
+        userID = userIDNumber++;
     }
 
     public String getName() {
@@ -16,13 +18,12 @@ public class User {
         this.name = name;
     }
 
-    public static int userID(){
-        userID++;
-        return userID;
-    }
 
     @Override
     public String toString() {
-        return "name: " + name + ", ID: 00" + userID();
+        if (userID >= 10){
+            return "name: " + name + ", ID: 0" + userID;
+        }
+            return "name: " + name + ", ID: 00" + userID;
     }
 }
