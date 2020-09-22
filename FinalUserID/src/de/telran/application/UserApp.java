@@ -1,6 +1,5 @@
 package de.telran.application;
 
-import de.telran.data.UserID;
 import de.telran.data.UserName;
 
 public class UserApp {
@@ -9,15 +8,21 @@ public class UserApp {
         UserName user2 = new UserName("Anna Bank");
         UserName user3 = new UserName("Igor Flach");
         UserName user4 = new UserName("Susanna Max");
+        UserName user5 = new UserName("Sasha Max");
+        UserName user6 = new UserName("Marina Max");
+        UserName user7 = new UserName("Donald Tramp");
+        UserName user8 = new UserName("Juriy Maximov");
+        UserName user9 = new UserName("Susa Maxi");
+        UserName user10 = new UserName("Anna Max");
+        UserName user11 = new UserName("Ursula Baxy");
+        UserName user12 = new UserName("Michail Viber");
 
-        UserID userID01 = new UserID(001);
-        UserID userID02 = new UserID(002);
-        UserID userID03 = new UserID(003);
-        UserID userID04 = new UserID(004);
-
-        System.out.println(user1.getName() + userID01);
-        System.out.println(user2.getName() + userID02);
-        System.out.println(user3.getName() + userID03);
-        System.out.println(user4.getName() + userID04);
+        System.out.println(user1);
+        System.out.println(user2);
+        System.out.println(user3);
+        System.out.println(user4);
+        System.out.println(user7);
+        System.out.println(user9);
+        System.out.println(user12);
     }
 }
