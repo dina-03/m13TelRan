@@ -52,6 +52,8 @@ public class BankApp {
         System.out.println("Всего клиентов женского пола:");
         System.out.println((myBank.getCountsClientsPerSex(Sex.FEMALE)));
         Person.split();
-        System.out.println(Arrays.toString(myBank.getClientsPerSex()));
+       Person.displayPersons(myBank.getClientsPerSex(Sex.MALE));
+       Person.split();
+       Person.displayPersons(myBank.getClientsPerSex(Sex.FEMALE));
     }
 }

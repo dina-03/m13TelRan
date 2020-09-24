@@ -79,6 +79,12 @@ public class Person {
         return "Client: " + firstName + " " + lastName + " (" + sex + ")" + "\n";
     }
 
+    public static void displayPersons(Person[] clients){
+        for (Person p : clients) {
+            System.out.println(p.toStringName());
+        }
+    }
+
     public static void split() {
         System.out.println(".-.-.-.-.-.-.-.-.");
     }

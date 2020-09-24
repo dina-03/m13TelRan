@@ -1,6 +1,7 @@
 package de.telran.dao;
 
 import de.telran.data.BankAccount;
+import de.telran.data.Person;
 import de.telran.data.Sex;
 
 public class Bank {
@@ -60,8 +61,19 @@ public class Bank {
             System.out.println("-.-.-.-.-.-.-");
         }
     }
+    public Person[] getClientsPerSex(Sex sex) {
+        Person[] clientPerSex = new Person[getCountsClientsPerSex(sex)];
+        int newIndex = 0;
+        for (int i = 0; i < size; i++) {
+            if (accounts[i].getClient().getSex().equals(sex)){
+                clientPerSex[newIndex] = accounts[i].getClient();
+                newIndex++;
+            }
+        }
+        return clientPerSex;
+    }
 
-    public String[] getClientsPerSex() {
+   /* public String[] getClientsPerSex() {
         String[] clientPerSex = new String[size];
         for (int i = 0; i < size; i++) {
             if (accounts[i].getClient().getSex().equals(Sex.FEMALE)) {
@@ -71,20 +83,25 @@ public class Bank {
             }
         }
         return clientPerSex;
-    }
+    }*/
 
     public void displayClientsPerSex(Sex sex) {
         for (int i = 0; i < size; i++) {
             if (accounts[i].getClient().getSex().equals(sex)) {
-                System.out.println(accounts[i].getClient().toStringName());
+                System.out.println(accounts[i].getClient());
             }
         }
     }
 
     public int getCountsClientsPerSex(Sex sex) {
         int count = 0;
-        for (BankAccount account : getExistingAccount()) {
+       /* for (BankAccount account : getExistingAccount()) {
             if (account.getClient().getSex().equals(sex)) {
+                count++;
+            }
+        }*/
+        for (int i = 0; i < size; i++) {
+            if (accounts[i].getClient().getSex().equals(sex)) {
                 count++;
             }
         }
