@@ -1,7 +1,7 @@
 package de.telran.data;
 
-public class LeapYear {
-    public static boolean leapYear(int year, int month, int day) {
+public class DateValidator {
+    public static boolean dateValidator(int year, int month, int day) {
         if (!isLeapYear(year) && day <= 28 && month == 2){
             return true;
         }else if (isLeapYear(year) && day <= 29 && month == 2){
