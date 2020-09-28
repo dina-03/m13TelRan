@@ -9,6 +9,7 @@ public class Post {
     private int like = 0;
     private int disLike = 0;
 
+
     public Post(User author, String title, String content) {
         this.author = author;
         this.postID = ++totalPosts;

@@ -2,17 +2,12 @@ package de.telran.data;
 
 import java.util.Scanner;
 
-public class UserAdmin extends User {
+public class Admin {
     private String password;
 
-    public UserAdmin(String userName, int age, String password) {
-        super(userName, age);
+    public Admin(String password) {
         this.password = password;
     }
-
-    /*public String getPassword(){
-         return password;
-     }*/
     public boolean checkPassword(Scanner scanner) {
         int count = 3;
         while (count > 0) {

@@ -1,5 +1,6 @@
 package de.telran.dao;
 
+import de.telran.data.Admin;
 import de.telran.data.Post;
 import de.telran.data.User;
 import de.telran.data.UserAdmin;
@@ -9,10 +10,12 @@ import java.util.Scanner;
 public class Forum {
     private Post[] posts;
     private int size;
+    private Admin admin;
 
-    public Forum(int capacity) {
+    public Forum(int capacity, String password) {
         posts = new Post[capacity];
         size = 0;
+        this.admin = new Admin(password);
     }
 
     public int getSize() {
@@ -26,6 +29,16 @@ public class Forum {
             return true;
         }
         return false;
+    }
+
+    public Post getPostWithMaxLikes(Post[] posts) {
+        Post maxLikes = posts[0];
+        for (int i = 0; i < size; i++) {
+            if (posts[i].getLike() > maxLikes.getLike()) {
+                maxLikes = posts[i];
+            }
+        }
+        return maxLikes;
     }
 
     public Post[] getLastPostsByAuthor(String author, int numberOfPost) {
@@ -49,15 +62,17 @@ public class Forum {
         return -1;
     }
 
-    public void deletePostByAdmin(Post post, Scanner scanner) {
-        if (checkPassword(scanner)) {
+    public void deletePostByAdmin(Post post, Scanner scanner, User admin) {
+        if (!(admin instanceof UserAdmin))
+            System.out.println("access is denied");
+        else if (((UserAdmin) admin).checkPassword(scanner)) {
             boolean flag = false;
             for (int i = 0; i < size; i++) {
-               /* if (posts[i].getPostID() == postID) {
+            /*   if (posts[i]== post) {
                     System.out.println("Delete post" + posts[i].getPostID() + "?");
-                    System.out.println("press " + postID + " if yes or 0 if no");
+                    System.out.println("press " + post + " if 1 yes or 0 if no");
                     posts[i].setPostID(scanner.nextInt());
-                    if (posts[i].equals(postID)) {
+                    if (posts[i].equals(post)) {
                         posts[i] = posts[size - 1];
                         size--;
                         System.out.println("post " + posts[i].getPostID() + " removed");
@@ -68,7 +83,7 @@ public class Forum {
                         flag = false;
                     }
                 }*/
-                if (posts[i].equals(post)){
+                if (posts[i].equals(post)) {
                     System.out.println("you deleted the post: " + "\n" + post);
                     posts[i] = posts[size - 1];
                     size--;
@@ -84,8 +99,10 @@ public class Forum {
         }
     }
 
-    public void updatePostByAdmin(int postID, Scanner scanner) {
-        if (checkPassword(scanner)) {
+    public void updatePostByAdmin(int postID, Scanner scanner, User admin) {
+        if (!(admin instanceof UserAdmin))
+            System.out.println("access is denied");
+        else if (((UserAdmin) admin).checkPassword(scanner)) {
             boolean flag = false;
             for (int i = 0; i < size; i++) {
                 if (posts[i].getPostID() == postID) {
@@ -105,22 +122,33 @@ public class Forum {
         }
     }
 
-    private boolean checkPassword(Scanner scanner) {
-        for (int i = 0; i < size; i++) {
-            if (posts[i].getAuthor().getClass().getSimpleName().equals("UserAdmin")) {
-                UserAdmin admin = (UserAdmin) posts[i].getAuthor();
-                int count = 3;
-                while (count > 0) {
-                    System.out.println("Enter password, please");
-                    String password = scanner.nextLine();
-                    if (admin.getPassword().equals(password)) {
-                        return true;
-                    } else
-                        count--;
+    public void updatePostByAdminTwo(int postID, Scanner scanner) {
+        if (admin.checkPassword(scanner)) {
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (posts[i].getPostID() == postID) {
+                    System.out.println("old content: " + posts[i].getContent());
+                    System.out.println("Enter new content");
+                    posts[i].setContent(scanner.nextLine());
+                    System.out.println(postID + " content change to: " + posts[i].getContent());
+                    flag = true;
+                    break;
                 }
-                break;
             }
+            if (!flag) {
+                System.out.println("post not found");
+            }
+        } else {
+            System.out.println("access is denied");
         }
-        return false;
     }
+
+    public static Object[] arrayAnyType(Object[] array) {
+        for (Object o : array) {
+            //System.out.print(o.getClass());
+            System.out.print(o + " ");
+        }
+        return array;
+    }
+
 }

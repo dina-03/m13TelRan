@@ -31,9 +31,11 @@ public class ForumApp {
         Post post7 = new Post(user7, "Post5",
                 "Эта парадигматическая страна ...");
         Post post8 = new Post(user4, "Post5", "Даже всемогущая пунктуация не имеет власти над рыбными текстами ");
-        Post post9 = new Post(admin, "Post6", "Hello People!!! I am admin");
+        // Post post9 = new Post(admin, "Post6", "Hello People!!! I am admin");
 
-        Forum forum = new Forum(100);
+        Post[] group = {post1, post2, post3, post4, post5, post6, post7, post8};
+
+        Forum forum = new Forum(100, "was");
         forum.addPost(post1);
         forum.addPost(post2);
         forum.addPost(post3);
@@ -42,7 +44,7 @@ public class ForumApp {
         forum.addPost(post6);
         forum.addPost(post7);
         forum.addPost(post8);
-        forum.addPost(post9);
+        // forum.addPost(post9);
 
         //System.out.println(post1.getLike());
         post1.addLike();
@@ -60,18 +62,29 @@ public class ForumApp {
         post5.addDisLike();
         post5.addDisLike();
         post5.addLike();
+        post3.addLike();
+        post3.addLike();
+        post3.addLike();
+        post3.addLike();
+        post3.addLike();
+        post3.addLike();
+        post3.addLike();
+        post3.addLike();
         // System.out.println(post1.getLike());
         // System.out.println(post1);
         System.out.println("-----");
         // forum.updatePostByAdmin(post6.getPostID(), scanner);
         // System.out.println(post6.getContent());
-        forum.deletePostByAdmin(post5, scanner);
-
+        // forum.deletePostByAdmin(post5, scanner, admin);
+        System.out.println("Post with max like:\n" + forum.getPostWithMaxLikes(group));
         System.out.println("-----");
 
+        // forum.updatePostByAdminTwo(post2.getPostID(), scanner);
+        // System.out.println(post2);
       /*  System.out.println(admin);
-        System.out.println(user1);
-*/
+        System.out.println(user1);*/
+        Object[] array = new Object[]{1, 2, 3, "String", 2.9, 'A', 'B'};
+        Forum.arrayAnyType(array);
         scanner.close();
     }
 }
