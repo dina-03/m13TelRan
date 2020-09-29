@@ -143,7 +143,7 @@ public class Forum {
         }
     }
 
-    public static void arrayAnyType(Object[] array) {
+    public static void displayArrayAnyType(Object[] array) {
         for (Object o : array) {
             if (o != null)
             //System.out.print(o.getClass());
