@@ -83,8 +83,12 @@ public class ForumApp {
         // System.out.println(post2);
       /*  System.out.println(admin);
         System.out.println(user1);*/
+        User[] users = new User[]{user1, user2, user3, user4, user5, user6, user7};
         Object[] array = new Object[]{1, 2, 3, "String", 2.9, 'A', 'B'};
         Forum.arrayAnyType(array);
+        System.out.println();
+        Forum.arrayAnyType(users);
+       // Forum.arrayAnyType(group);
         scanner.close();
     }
 }

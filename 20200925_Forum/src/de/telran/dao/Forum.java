@@ -143,12 +143,12 @@ public class Forum {
         }
     }
 
-    public static Object[] arrayAnyType(Object[] array) {
+    public static void arrayAnyType(Object[] array) {
         for (Object o : array) {
+            if (o != null)
             //System.out.print(o.getClass());
             System.out.print(o + " ");
         }
-        return array;
     }
 
 }
