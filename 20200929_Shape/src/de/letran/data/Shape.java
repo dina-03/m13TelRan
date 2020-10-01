@@ -67,10 +67,10 @@ public abstract class Shape {
     }
 
     public static Shape[] getShapesByShape(Shape[] shapes, String shape) {
-        Shape[] shapesByShape = new Shape[numberShapesByShape(shapes, shape.replace(" ", ""))];
+        Shape[] shapesByShape = new Shape[numberShapesByShape(shapes, shape)];
         int index = 0;
         for (int i = 0; i < shapes.length; i++) {
-            if (shapes[i].getClass().getSimpleName().equalsIgnoreCase(shape.replace(" ", ""))){
+            if (shapes[i].getClass().getSimpleName().equalsIgnoreCase(shape.replace(" ", ""))|| shapes[i].getClass().getSimpleName().contains(shape)){
                 shapesByShape[index] = shapes[i];
                 index++;
             }
@@ -81,7 +81,7 @@ public abstract class Shape {
     private static int numberShapesByShape(Shape[] shapes, String shape) {
         int count = 0;
         for (Shape s : shapes) {
-            if (s.getClass().getSimpleName().equalsIgnoreCase(shape.replace(" ", "")))
+            if (s.getClass().getSimpleName().equalsIgnoreCase(shape.replace(" ", "")) || s.getClass().getSimpleName().contains(shape))
                 ;
             count++;
         }

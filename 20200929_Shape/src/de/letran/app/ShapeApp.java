@@ -44,7 +44,9 @@ public class ShapeApp {
         System.out.println();
         printArray(Shape.getShapesByColor(shapes, Color.YELLOW));*/
        // printArray(Shape.getShapesByShape(shapes, "Circle"));
-        printArray(Shape.getShapesByShape(shapes, "square"));
+       // printArray(Shape.getShapesByShape(shapes, "square"));
+       // printArray(Shape.getShapesByShape(shapes, "right triangle"));
+        printArray(Shape.getShapesByShape(shapes, "Triangle"));
     }
 
     public static void printArray(Object[] objects) {
