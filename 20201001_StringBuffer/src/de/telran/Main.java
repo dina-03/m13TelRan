@@ -23,8 +23,10 @@ public class Main {
         System.out.println(sb2.charAt(5));
         sb1 = sb2;
 
-        System.out.println(sb1);
-        System.out.println();
+        StringBuffer sb5 = new StringBuffer(sb1);
+        System.out.println(sb1.reverse());
+        System.out.println(sb5);
+        System.out.println(";;;;;;;;;;;;;;;");
         int[] num = {1, 2, 3};
         System.out.println(sb1.append(5).append("!!!!").append(Arrays.toString(num)).append(';'));
         System.out.println(sb1);
@@ -38,6 +40,8 @@ public class Main {
         System.out.println(sumNumber(sb4));
         System.out.println(sumNumber("122589502"));
         printRepeatChar("aaabbcdddd");
+        System.out.println("-------");
+        printRepeatCharTwo("bnnnjjsssssool");
     }
 
     private static int sumNumber(String input) {
@@ -82,5 +86,26 @@ public class Main {
             }
         }
         System.out.println("a" + count1 + "b" + count2 + "c" + count3 + "d" + count4);
+    }
+
+    private static void printRepeatCharTwo(String input){
+        if (input.equals("")){
+            System.out.println("String is empty");
+        }else {
+            int count = 0;
+            char ch = input.charAt(0);
+            StringBuffer output = new StringBuffer();
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) == ch){
+                    count++;
+                }else {
+                    output = output.append(ch).append(count);
+                    ch = input.charAt(i);
+                    count = 1;
+                }
+            }
+            output = output.append(ch).append(count);
+            System.out.println(output);
+        }
     }
 }
