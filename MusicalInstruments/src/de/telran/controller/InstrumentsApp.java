@@ -11,7 +11,11 @@ public class InstrumentsApp {
 
         Instruments[] instruments = {guitar, drum, trumpet, piano};
 
-        Instruments trumpet1 = Instruments.createObject("Trumpet", 3);
+        for (Instruments ins : instruments) {
+            ins.play();
+        }
+
+       /* Instruments trumpet1 = Instruments.createObject("Trumpet", 3);
         Instruments piano1 = Instruments.createObject("Piano", 4);
         trumpet.play();
         Instruments.split();
@@ -23,6 +27,6 @@ public class InstrumentsApp {
         Instruments.split();
         piano.play();
         Instruments.split();
-        piano1.play();
+        piano1.play();*/
     }
 }
