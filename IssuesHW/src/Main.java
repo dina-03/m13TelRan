@@ -20,13 +20,84 @@ public class Main {
         split();
         int[] number = new int[5];
         System.out.println(Arrays.toString(fillArray(5, 2, number)));// -> {5,7,9,11,13}
+        split();
+        int[] array = new int[]{8, 3, 7, 5, 6, 10, 12, 25, 2};
+        System.out.println(getMaxArray(array));
+        System.out.println(getMinArray(array));
+        split();
+        int[] b1 = {1, 2, 3};
+        int[] b2 = {7, 3};
+        int[] c1 = {1, 2, 3};
+        int[] c2 = {7, 3, 2};
+        int[] d1 = {1, 2, 3};
+        int[] d2 = {1, 3};
+        System.out.println(commonEnd(b1, b2));// → true
+        System.out.println(commonEnd(c1, c2));// → false
+        System.out.println(commonEnd(d1, d2));// → true
+        split();
+        int[] e1 = {0, 5, 0, 3};
+        int[] e2 = {0, 4, 0, 3};
+        int[] e3 = {0, 1, 0};
+        System.out.println(Arrays.toString(zeroMax(e1)));// →[5, 5, 3, 3]
+        System.out.println(Arrays.toString(zeroMax(e2)));// →[3, 4, 3, 3]
+        System.out.println(Arrays.toString(zeroMax(e3)));// →[1, 1, 0]
+        split();
+        System.out.println(nonStart("Hello", "There"));// →"ellohere"
+        System.out.println(nonStart("java", "code"));// →"avaode"
+        System.out.println(nonStart("shotl", "java"));// →”hotlava"
+        split();
+        System.out.println(middleTwo("string"));// →"ri"
+        System.out.println(middleTwo("code"));// →”od"
+        System.out.println(middleTwo("Practice"));// → “ct"
+        split();
 
     }
 
+    private static String middleTwo(String str) {
+        return str.substring((str.length() / 2) - 1, (str.length() / 2) + 1);
+    }
+
+    private static String nonStart(String str1, String str2) {
+        return str1.substring(1, str1.length()) + str2.substring(1, str2.length());
+    }
+
+    public static int[] zeroMax(int[] arr) {
+        int max = 0;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] % 2 != 0) {
+                max = Math.max(max, arr[i]);
+            } else if (arr[i] == 0) {
+                arr[i] = max;
+            }
+        }
+        return arr;
+    }
+
+    public static boolean commonEnd(int[] a, int[] b) {
+        return a[0] == b[0] || a[a.length - 1] == b[b.length - 1];
+    }
+
+    public static int getMinArray(int[] arr) {
+        int min = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min)
+                min = arr[i];
+        }
+        return min;
+    }
+
+    public static int getMaxArray(int[] arr) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            max = Math.max(max, arr[i]);
+        }
+        return max;
+    }
+
     public static int[] fillArray(int a, int b, int[] num) {
-        for (int i = 0; i < num.length; i += b) {
+        for (int i = 0; i < num.length; i++) {
             num[i] = a;
-            num[i + 1] = a + b++;
+            num[i] += i * b;
         }
         return num;
     }
