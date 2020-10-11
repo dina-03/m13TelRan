@@ -3,7 +3,7 @@ package de.telran.data;
 public class WordTransformer {
 
     //aghJ kLU jgkslg ttt -> aghJ KLU jgkslg TTT
-    public static String wordTransform(String input) {
+    public String wordTransform(String input) {
         String[] strings = input.split(" ");
         for (int i = 0; i < strings.length; i++) {
             if (strings[i].length() == 3) {
@@ -14,7 +14,7 @@ public class WordTransformer {
         return String.join(" ", strings);
     }
 
-    public static String wordTransformTwo(String input, int action) {
+    public String wordTransformTwo(String input, int action) {
         String[] strings = input.split(" ");
         for (int i = 0; i < strings.length; i++) {
             if (action == 1) {
@@ -30,7 +30,7 @@ public class WordTransformer {
         return String.join(" ", strings);
     }
 
-    public static String wordTransformTree(String input, TransformerRuleLength3 tr) {
+    public String wordTransformTree(String input, TransformerRuleLength3 tr) {
         String[] strings = input.split(" ");
         for (int i = 0; i < strings.length; i++) {
             if (tr.check(strings[i])) {
