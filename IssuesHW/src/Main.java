@@ -58,7 +58,7 @@ public class Main {
     }
 
     private static String nonStart(String str1, String str2) {
-        return str1.substring(1, str1.length()) + str2.substring(1, str2.length());
+        return str1.substring(1) + str2.substring(1);
     }
 
     public static int[] zeroMax(int[] arr) {
