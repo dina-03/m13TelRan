@@ -1,19 +1,14 @@
-package de.talran.controller;
-
-import de.talran.data.Basket;
-import de.talran.data.Category;
-import de.talran.data.Product;
-import de.talran.data.User;
+package de.talran.data;
 
 import java.util.Scanner;
 
-public class ShopApp {
+public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         User user1 = new User("Petya", "pass1", new Basket(5));
         User user2 = new User("Kostya", "pass2", new Basket(3));
-        // user1.checkUserName(scanner);
-        // user1.checkPassword(scanner);
+        user1.checkUserName(scanner);
+        user1.checkPassword(scanner);
 
         Product clothing1 = new Product("T-Shirt", 4.99, 4);
         Product clothing2 = new Product("Sports shuttles", 6.99, 5);
@@ -26,13 +21,14 @@ public class ShopApp {
         Category sport = new Category("sport", new Product[]{new Product("painters", 120.0, 5),
                 new Product("T-Shirt-Adidas", 75.00, 5)});
 
-        Basket user01 = new Basket(10);
-        Basket user02 = new Basket(10);
-
-       // user1.basket.addProduct(user1,sport); //->так как в разных папках, то не видит basket!!!!
-
         Category[] catalog = new Category[]{clothing, furniture, sport};
 
+        user1.basket.addProduct(user1, clothing2);
+        user1.basket.deleteProduct(user1, clothing2);
+        System.out.println();
+        user1.basket.addProduct(user1, furniture2);
+        user1.basket.addProduct(user1, furniture3);
+        System.out.println();
         Category.displayCatalog(catalog);
         System.out.println("________");
 
@@ -43,9 +39,8 @@ public class ShopApp {
         Category.displayProductCatalogByCategory(furniture);
         System.out.println();
         Category.displayProductCatalogByCategory(sport);
-        System.out.println();
+        System.out.println("________");
         Basket.displayProducts(products);
         System.out.println();
-
     }
 }

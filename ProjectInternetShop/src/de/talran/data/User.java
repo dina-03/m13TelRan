@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class User {
     private String userName;
-    private int age;
     private String password;
     Basket basket;
 
     public User(String userName, String password, Basket basket) {
         this.userName = userName;
-        this.password = password;
         this.password = password;
         this.basket = basket;
     }
@@ -19,14 +17,25 @@ public class User {
         return userName;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     @Override
     public String toString() {
-        return "UserName: " + userName +
-                ", age: " + age;
+        return userName;
+    }
+
+    public boolean checkUserName(Scanner scanner){
+        int count = 3;
+        while (count > 0){
+            System.out.println("Enter user name, please: ");
+            String userName = scanner.nextLine();
+            if (this.userName.equalsIgnoreCase(userName)){
+                return true;
+            }else{
+                count--;
+                System.out.println("error user name, try again, please:");
+            }
+        }
+        scanner.close();
+        return false;
     }
 
     public boolean checkPassword(Scanner scanner) {
@@ -36,9 +45,13 @@ public class User {
             String password = scanner.nextLine();
             if (this.password.equals(password)) {
                 return true;
-            } else
+            } else{
                 count--;
+                System.out.println("invalid password");
+            }
         }
+        scanner.close();
         return false;
     }
+
 }
