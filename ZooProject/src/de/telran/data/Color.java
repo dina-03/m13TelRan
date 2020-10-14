@@ -1,0 +1,24 @@
+package de.telran.data;
+
+public enum Color {
+    BLUE,
+    BLUEGREY,
+    BLUEYELLOW,
+    BLUEGREEN,
+    GREY,
+    GREYBROWN,
+    GREYWHITE,
+    GREYGREEN,
+    WHITE,
+    WHITWBROWNGREY,
+    BLACKWHITE,
+    BLACK,
+    GREYBLUEWHITE,
+    BROWNWHITE,
+    BROWNGREEN,
+    GREEN,
+    BROWN,
+    BROWNGREYGREEN,
+    YELLOWBROWN,
+    GOLD
+}
