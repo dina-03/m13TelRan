@@ -4,9 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Test.*;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class CustomArrayListTest {
+    //List<String> list2 = new ArrayList<>();
+
     @Test
     public void testSizeZero() {
         CustomArrayList al = new CustomArrayList();
@@ -61,6 +65,21 @@ public class CustomArrayListTest {
         Assert.assertEquals(4, num.size());
     }
     //write test with String
+    @Test
+    public void testRemoveByIndexStringArray(){
+        String[] input = {"aa", "bb", "cc", "dd","ee"};
+        CustomArrayList<String> listString = new CustomArrayList<String>();
+        for (String s : input) {
+            listString.add(s);
+        }
+        String actualDeleteString = listString.removeById(1) ;
+        String[] expected = {"aa", "cc", "dd", "ee"};
+        Assert.assertEquals("bb",actualDeleteString);
+        for (int i = 0; i < expected.length; i++) {
+            Assert.assertEquals(expected[i], listString.get(i));
+        }
+        Assert.assertEquals(4, listString.size());
+    }
 
     @Test
     public void testRemoveByElement() {
@@ -78,5 +97,15 @@ public class CustomArrayListTest {
             Assert.assertEquals(expected[i], listString.get(i));
         }
         Assert.assertEquals(3,listString.size());
+    }
+
+    @Test
+    public void testIndexOf(){
+        String[] input = {"aa", "bb", "cc", "dd"};
+        CustomArrayList<String> listString = new CustomArrayList<String>();
+        for (String s : input) {
+            listString.add(s);
+        }
+        Assert.assertEquals(2,listString.indexOf("cc"));
     }
 }

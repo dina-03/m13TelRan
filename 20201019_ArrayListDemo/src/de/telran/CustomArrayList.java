@@ -55,5 +55,13 @@ public class CustomArrayList<E> implements CustomList<E> {
         }
         return false;
     }
-    //public int indexOf(E o){}
+    public int indexOf(E o){
+        int index = 0;
+        for (int i = 0; i < size; i++) {
+            if (source[i].equals(o)){
+                index = i;
+            }
+        }
+        return index;
+    }
 }
