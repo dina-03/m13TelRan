@@ -22,36 +22,23 @@ public class User {
         return userName;
     }
 
-    public boolean checkUserName(Scanner scanner){
+    public boolean checkUserNameAndPassword(Scanner scanner){
         int count = 3;
         while (count > 0){
             System.out.println("Enter user name, please: ");
             String userName = scanner.nextLine();
-            if (this.userName.equalsIgnoreCase(userName)){
-                return true;
-            }else{
-                count--;
-                System.out.println("error user name, try again, please:");
-            }
-        }
-        scanner.close();
-        return false;
-    }
-
-    public boolean checkPassword(Scanner scanner) {
-        int count = 3;
-        while (count > 0) {
             System.out.println("Enter password, please");
             String password = scanner.nextLine();
-            if (this.password.equals(password)) {
+            if (this.userName.equalsIgnoreCase(userName) && this.password.equals(password)){
                 return true;
-            } else{
-                count--;
-                System.out.println("invalid password");
             }
+           else{
+                count--;
+                System.out.println("error user name or password, try again, please:");
+            }
+
         }
         scanner.close();
         return false;
     }
-
 }
