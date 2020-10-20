@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class CustomLinkedListTest {
-    private CustomList<Integer> list = new CustomLinkedList<>();
+    private CustomList<Integer> list = new CustomLinkedList<Integer>();
     private CustomList<String> listString = new CustomLinkedList<>();
 
     @Test
@@ -36,16 +36,61 @@ public class CustomLinkedListTest {
 
     @Test
     public void testGetElementValue() {
+        listString.add("aa");
+        listString.add("bb");
+        Assert.assertEquals("aa", listString.get(0));
+        Assert.assertEquals("bb", listString.get(1));
+    }
 
+    @Test
+    public void testGetElementValueInt() {
+        list.add(1);
+        list.add(2);
+        int a = list.get(0);
+        int b = list.get(1);
+        Assert.assertEquals(1, a);
+        Assert.assertEquals(2, b);
     }
 
     @Test
     public void testRemoveById() {
-
+        String[] arr = {"a", "b", "c"};
+        for (String s : arr) {
+            listString.add(s);
+        }
+        String actualDeleteStringById = listString.removeById(1);
+        String[] expected = {"a", "c"};
+        Assert.assertEquals("b", actualDeleteStringById);
+        for (int i = 0; i < expected.length; i++) {
+            Assert.assertEquals(expected[i], listString.get(i));
+        }
+        Assert.assertEquals(2, listString.size());
     }
 
     @Test
-    public void testRemove(){
+    public void testRemoveByIdTwo() {
+        int[] arr = {1, 2, 3, 4};
+        for (int a : arr) {
+            list.add(a);
+        }
+        int actualDeleteStringById = list.removeById(1);
+        Assert.assertEquals(2,actualDeleteStringById);
+    }
 
+    @Test
+    public void testRemove() {
+        String[] arr = {"one", "two"};
+        for (String s : arr) {
+            listString.add(s);
+        }
+        boolean isRemoved = listString.remove("one");
+        boolean isNotRemoved = listString.remove("tree");
+        Assert.assertTrue(isRemoved);
+        Assert.assertFalse(isNotRemoved);
+        String[] expected = {"two"};
+        for (int i = 0; i < expected.length; i++) {
+            Assert.assertEquals(expected[i], listString.get(i));
+        }
+        Assert.assertEquals(1, listString.size());
     }
 }
