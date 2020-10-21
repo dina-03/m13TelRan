@@ -7,9 +7,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         User user1 = new User("Petya", "pass1", new Basket(5));
         User user2 = new User("Kostya", "pass2", new Basket(3));
-       // user1.checkUserName(scanner);
-        //user1.checkPassword(scanner);
-        user1.checkUserNameAndPassword(scanner);
+       // user1.checkUserNameAndPassword(scanner);
 
         Product clothing1 = new Product("T-Shirt", 4.99, 4);
         Product clothing2 = new Product("Sports shuttles", 6.99, 5);
@@ -24,11 +22,11 @@ public class App {
 
         Category[] catalog = new Category[]{clothing, furniture, sport};
 
-       /* user1.basket.addProduct(user1, clothing2);
-        user1.basket.deleteProduct(user1, clothing2);
+        user1.basket.addProduct(clothing2);
+        user1.basket.deleteProduct(clothing2);
         System.out.println();
-        user1.basket.addProduct(user1, furniture2);
-        user1.basket.addProduct(user1, furniture3);
+        user1.basket.addProduct(furniture2);
+        user1.basket.addProduct(furniture3);
         System.out.println();
         Category.displayCatalog(catalog);
         System.out.println("________");
@@ -42,6 +40,6 @@ public class App {
         Category.displayProductCatalogByCategory(sport);
         System.out.println("________");
         Basket.displayProducts(products);
-        System.out.println();*/
+        System.out.println();
     }
 }
