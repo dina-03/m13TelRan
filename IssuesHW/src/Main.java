@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a1 = {6, 2, 5, 3};
+        /*int[] a1 = {6, 2, 5, 3};
         int[] a2 = {1, 2};
         int[] a3 = {1};
         System.out.println(Arrays.toString(shiftLeft(a1)));// → [2, 5, 3, 6]
@@ -49,8 +52,75 @@ public class Main {
         System.out.println(middleTwo("string"));// →"ri"
         System.out.println(middleTwo("code"));// →”od"
         System.out.println(middleTwo("Practice"));// → “ct"
+        split();*/
+        System.out.println(checkPalindromeOne("ШАЛАШ"));
+        System.out.println(checkPalindromeOne("ШАПКА"));
+        System.out.println(checkPalindromeOne("ABBA"));
+        System.out.println(Arrays.toString(arrayFillingTwo(9)));
+        System.out.println(arrayFillingTwo1(8));
+        System.out.println(fillArrayArithmeticProgression(5, 2, 5));
+        Integer[] array = {8, 3, 7, 5, 6, 10, 12, 25, 2};
+        System.out.println(sumMaxAndMinList(array));
         split();
+        int[] e1 = {0, 5, 0, 3};
+        int[] e2 = {0, 4, 0, 3};
+        int[] e3 = {0, 1, 0};
+        System.out.println(Arrays.toString(zeroMaxTwo(e1)));
+        System.out.println(Arrays.toString(zeroMaxTwo(e2)));
+        System.out.println(Arrays.toString(zeroMaxTwo(e3)));
+    }
 
+    public static int[] zeroMaxTwo(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == 0) {
+                int max = arr[i + 1];
+                for (int j = 0; j < arr.length && arr[j] != 0; j++) {
+                    if (arr[j] % 2 != 0 && arr[j] > max) {
+                        max = arr[j];
+                    }
+                }
+                arr[i] = max;
+            }
+        }
+        return arr;
+    }
+
+    public static int sumMaxAndMinList(Integer[] arr) {
+        List<Integer> list = Arrays.asList(arr);
+        return Collections.max(list) + Collections.min(list);
+    }
+
+    public static List<Integer> fillArrayArithmeticProgression(int a, int b, int num) {
+        List<Integer> list = new ArrayList<>();
+        while (num > 0) {
+            list.add(a);
+            a += b;
+            num--;
+        }
+        return list;
+    }
+
+    public static List<Integer> arrayFillingTwo1(int n) {
+        List<Integer> list = new ArrayList<>();
+        while (n > 0) {
+            if (n == 1) {
+                list.add(0);
+                return list;
+            }
+            Collections.addAll(list, 0, 1);
+            n -= 2;
+        }
+        return list;
+    }
+
+    public static int[] arrayFillingTwo(int n) {
+        int[] arr = new int[n];
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 != 0) {
+                arr[i] = 1;
+            }
+        }
+        return arr;
     }
 
     private static String middleTwo(String str) {
@@ -137,6 +207,22 @@ public class Main {
             output.insert(0, str.charAt(i));
         }
         return str.equals(output.toString());
+    }
+
+    private static boolean checkPalindromeOne(String str) {
+        if (str.length() == 1) {
+            return true;
+        } else {
+            if (str.substring(0, 1).equals(str.substring(str.length() - 1))) {
+                if (str.length() == 2) {
+                    return true;
+                }
+                return checkPalindromeOne(str.substring(1, str.length() - 1));
+            } else {
+                return false;
+            }
+        }
+        // return false;
     }
 
     private static int[] shiftLeft(int[] arr) {
