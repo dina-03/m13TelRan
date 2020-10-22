@@ -11,6 +11,9 @@ public class Library {
         size = 0;
     }
 
+    public Book[] getBooks() {
+        return books;
+    }
     //Library library = new Library(60);
     //books -> empty array of Book capacity 60;
     //library.size -> 0

@@ -15,6 +15,7 @@ public class Book {
         this.page = page;
     }
 
+
     public String getTitle() {
         return title;
     }
