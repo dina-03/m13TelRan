@@ -58,8 +58,8 @@ public class CustomLinkedListTest {
         for (String s : arr) {
             listString.add(s);
         }
-        String actualDeleteStringById = listString.removeById(1);
-        String[] expected = {"a", "c"};
+        String actualDeleteStringById = listString.removeById(2);
+        String[] expected = {"a", "b"};
         Assert.assertEquals("b", actualDeleteStringById);
         for (int i = 0; i < expected.length; i++) {
             Assert.assertEquals(expected[i], listString.get(i));
@@ -73,8 +73,8 @@ public class CustomLinkedListTest {
         for (int a : arr) {
             list.add(a);
         }
-        int actualDeleteStringById = list.removeById(2);
-        Assert.assertEquals(3,actualDeleteStringById);
+        int actualDeleteStringById = list.removeById(0);
+        Assert.assertEquals(2,actualDeleteStringById);
     }
 
     @Test

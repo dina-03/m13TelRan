@@ -84,6 +84,21 @@ public class CustomLinkedList<E> implements CustomList<E> {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
+
+        if (index == 0){
+            first = first.next;
+            first.prev = null;
+            size--;
+            return first.value;
+        }
+
+        if (index == size - 1){
+            last = last.prev;
+            last.next = null;
+            size--;
+            return last.value;
+        }
+
         Node ret = getNode(index);
         ret.prev.next = ret.next;
         ret.next.prev = ret.prev;
