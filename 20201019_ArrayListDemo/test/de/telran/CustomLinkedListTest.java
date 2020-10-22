@@ -73,8 +73,8 @@ public class CustomLinkedListTest {
         for (int a : arr) {
             list.add(a);
         }
-        int actualDeleteStringById = list.removeById(1);
-        Assert.assertEquals(2,actualDeleteStringById);
+        int actualDeleteStringById = list.removeById(2);
+        Assert.assertEquals(3,actualDeleteStringById);
     }
 
     @Test

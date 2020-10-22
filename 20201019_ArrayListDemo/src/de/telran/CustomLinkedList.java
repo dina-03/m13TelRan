@@ -71,8 +71,10 @@ public class CustomLinkedList<E> implements CustomList<E> {
 
     private Node getNode(int index) {
         Node ret = first;   //[first] [second]
+       // Node las = last;
         for (int i = 0; i < index; i++) {
             ret = ret.next;
+          //  las = las.prev;
         }
         return ret;
     }
