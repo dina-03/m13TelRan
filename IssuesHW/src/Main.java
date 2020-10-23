@@ -62,24 +62,29 @@ public class Main {
         Integer[] array = {8, 3, 7, 5, 6, 10, 12, 25, 2};
         System.out.println(sumMaxAndMinList(array));
         split();
-        int[] e1 = {0, 5, 0, 3};
-        int[] e2 = {0, 4, 0, 3};
-        int[] e3 = {0, 1, 0};
+        int[] e1 = {0, 5, 0, 3};// →[5, 5, 3, 3]
+        int[] e2 = {0, 4, 0, 3};// →[3, 4, 3, 3]
+        int[] e3 = {0, 1, 0};// →[1, 1, 0]
+        int[] e4 = {3, 0, 1, 7, 3, 0, 5, 2, 9};// 3 7 1 7 3 9 5 2 9
         System.out.println(Arrays.toString(zeroMaxTwo(e1)));
         System.out.println(Arrays.toString(zeroMaxTwo(e2)));
         System.out.println(Arrays.toString(zeroMaxTwo(e3)));
+        System.out.println(Arrays.toString(zeroMaxTwo(e4)));
     }
 
     public static int[] zeroMaxTwo(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i] == 0) {
                 int max = arr[i + 1];
-                for (int j = 0; j < arr.length && arr[j] != 0; j++) {
-                    if (arr[j] % 2 != 0 && arr[j] > max) {
+                for (int j = i + 1; j < arr.length && arr[j] != 0; j++) {
+                    if (arr[j] % 2 == 1 && arr[j] > max) {
+                        // System.out.println(j);
                         max = arr[j];
                     }
                 }
-                arr[i] = max;
+                if (max % 2 != 0) {
+                    arr[i] = max;
+                }
             }
         }
         return arr;
