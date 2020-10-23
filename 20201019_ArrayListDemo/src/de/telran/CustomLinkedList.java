@@ -86,17 +86,19 @@ public class CustomLinkedList<E> implements CustomList<E> {
         }
 
         if (index == 0){
+            Node<E> ret = first;
             first = first.next;
             first.prev = null;
             size--;
-            return first.value;
+            return ret.value;
         }
 
         if (index == size - 1){
+            Node<E> ret = last;
             last = last.prev;
             last.next = null;
             size--;
-            return last.value;
+            return ret.value;
         }
 
         Node ret = getNode(index);
