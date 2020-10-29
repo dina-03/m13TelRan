@@ -65,12 +65,12 @@ public class SetAndMapIssues {
             keySet.addAll(map.keySet());
             List<String> values = new ArrayList<>();
             values.addAll(map.values());
-            String newKey = "";
-            String newValue = "";
-            for (int i = 0; i < map.size(); i++) {
+            String newKey = keySet.get(0) + keySet.get(1);
+            String newValue = values.get(0) + values.get(1);
+            /*for (int i = 0; i < map.size(); i++) {
                 newKey += keySet.get(i);
                 newValue += values.get(i);
-            }
+            }*/
             map.put(newKey, newValue);
         }
         return map;
