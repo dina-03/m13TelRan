@@ -20,6 +20,41 @@ public class Logic02 {
         System.out.println(roundSum(16, 17, 18));// → 60
         System.out.println(roundSum(12, 13, 14));// → 30
         System.out.println(roundSum(6, 4, 4));// → 10
+        System.out.println("-----6-----");
+        System.out.println(luckySum(1, 2, 3));// → 6
+        System.out.println(luckySum(1, 2, 13));// → 3
+        System.out.println(luckySum(1, 13, 3));// → 1
+        System.out.println("-----7-----");
+        System.out.println(closeFar(1, 2, 10));// → true
+        System.out.println(closeFar(1, 2, 3));// → false
+        System.out.println(closeFar(4, 1, 3));// → true
+        //test();
+    }
+
+    //Для трех целых значений, a b c, верните true, если одно из значений b или c «близко» (отличается от a не более чем
+// на 1), а другое - «далеко», отличаясь от обоих других значений на 2 или более.
+//Примечание. Math.abs (num) вычисляет абсолютное значение числа.
+    private static boolean closeFar(int a, int b, int c) {
+        return !close(b, c) & (close(a, b) ^ close(a, c));
+    }
+
+    public static boolean close(int a, int b) {
+        return Math.abs(a - b) <= 1;
+    }
+
+    //Учитывая 3 значения int, a b c, верните их сумму.
+//Однако, если одно из значений равно 13, оно не учитывается в сумме, а значения справа не учитываются.
+//Так, например, если b равно 13, то и b, и c не учитываются.
+    private static int luckySum(int a, int b, int c) {
+        int res = a + b + c;
+        if (a == 13) {
+            return 0;
+        } else if (b == 13) {
+            return a;
+        } else if (c == 13) {
+            return a + b;
+        }
+        return res;
     }
 
     //Для этой проблемы мы округлим значение int до следующего кратного 10, если его крайняя правая цифра равна 5 или
