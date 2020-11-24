@@ -1,4 +1,8 @@
 public class Main {
+    public static void main(String[] args) {
+        System.out.println(factRecursion(5));
+        System.out.println(factRecursion(10));
+    }
 
     public String reversS(String str) {
         String rev = new StringBuffer(str).reverse().toString();
@@ -27,5 +31,13 @@ public class Main {
             return Math.abs(a);
         }
         return recursionNod(b, a % b);
+    }
+
+    public static int factRecursion(int n){
+        if (n == 1){
+            return 1;
+        }else {
+            return n * factRecursion(n - 1);
+        }
     }
 }
