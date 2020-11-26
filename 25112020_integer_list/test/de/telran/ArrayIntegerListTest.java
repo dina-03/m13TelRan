@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 public class ArrayIntegerListTest {
     ArrayIntegerList ail = new ArrayIntegerList();
+
     {
         ail.addLast(1);
         ail.addLast(2);
@@ -15,7 +16,9 @@ public class ArrayIntegerListTest {
 
     @Test
     public void testAddLast() {
-        Assert.assertEquals(3, ail.size());
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            ail.get(3);
+        });
     }
 
     @Test
@@ -24,6 +27,9 @@ public class ArrayIntegerListTest {
 
     @Test
     public void get() {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            ail.get(0);
+        });
     }
 
     @Test
