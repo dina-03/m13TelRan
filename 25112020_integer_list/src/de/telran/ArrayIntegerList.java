@@ -14,10 +14,9 @@ public class ArrayIntegerList implements IntegerList {
     public void addLast(int element) {
         if (size == source.length) {
             increaseCapacity();
-            //source[size++] = element;
-            source[size] = element;
-            size++;
-        }
+        }//source[size++] = element;
+        source[size] = element;
+        size++;
     }
 
     void increaseCapacity() {
