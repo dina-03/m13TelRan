@@ -44,5 +44,8 @@ public class Main {
         for (int i = 0; i < list2.size(); i++) {
             System.out.println(list2.get(i) + " ");
         }
+
+        ArrayList<Integer> javaList =new  ArrayList<>();
+
     }
 }

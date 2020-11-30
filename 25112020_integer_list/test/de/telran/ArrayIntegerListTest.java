@@ -35,7 +35,7 @@ public class ArrayIntegerListTest {
         ail.addLast(2);
         ail.addLast(3);
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            ail.get(40);
+            ail.get(0);
         });
     }
 
@@ -174,6 +174,12 @@ public class ArrayIntegerListTest {
     }
 
     @Test
+    public void testClear_emptyList() {
+        ail.clear();
+        assertEquals(0, ail.size());
+    }
+
+    @Test
     public void testRemoveZeroIndexElement_correct() {
         for (int i = 0; i < 16; i++) {
             ail.addLast(i);
@@ -189,5 +195,64 @@ public class ArrayIntegerListTest {
             ail.addLast(i);
         }
         assertEquals(3, ail.removeById(middle));
+    }
+
+    @Test
+    public void testRemoveByIdElement_addCapacityNumberElementsAndRemoveIntermediate_correct() {
+        for (int i = 0; i < 18; i++) {
+            ail.addLast(i);
+        }
+        assertEquals(5, ail.removeById(5));
+        assertEquals(17, ail.size());
+
+        for (int i = 0; i < 5; i++) {
+            assertEquals(i, ail.get(i));
+        }
+        for (int i = 5; i < ail.size(); i++) {
+            assertEquals(i + 1, ail.get(i));
+        }
+    }
+
+    @Test
+    public void testRemoveByIdElement_setToFirstIndex_correct() {
+        addElementsToList(5);
+        ail.set(0, 100098);
+        assertEquals(100098, ail.get(0));
+    }
+
+    @Test
+    public void testRemoveByIdElement_setToLastIndex_correct() {
+        addElementsToList(5);
+        ail.set(ail.size() - 1, 400);
+        assertEquals(400, ail.get(ail.size() - 1));
+    }
+
+    @Test
+    public void testRemoveByIdElement_setToIndexBetweenFirstAndLast_correct() {
+        int numberOfElements = 20;
+        addElementsToList(numberOfElements);
+        ail.set(17, 3030);
+        assertEquals(3030, ail.get(17));
+    }
+
+    @Test
+    public void testUniversal_addSeveralElementsThenSetThenRemove_etc() {
+        addElementsToList(4);
+        ail.removeById(2);//{0,1,3}
+        ail.set(1, 5);//{0,5,3}
+        ail.addLast(-10);//{0,5,3,-10}
+        ail.addLast(-15);//{0,5,3,-10,-15}
+        ail.removeById(2);//{0,5,-10,-15}
+        ail.removeById(0);//{5,-10,-15}
+        assertEquals(3, ail.size());
+        assertEquals(5, ail.get(0));
+        assertEquals(-10, ail.get(1));
+        assertEquals(-15, ail.get(2));
+    }
+
+    private void addElementsToList(int number) {
+        for (int i = 0; i < number; i++) {
+            ail.addLast(i);
+        }
     }
 }
