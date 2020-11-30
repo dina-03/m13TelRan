@@ -38,7 +38,6 @@ public class ArrayIntegerList implements IntegerList {
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException();
         source[index] = value;
-        System.out.println(index + value);
     }
 
     @Override
@@ -58,6 +57,7 @@ public class ArrayIntegerList implements IntegerList {
 
     @Override
     public void clear() {
-
+        source = new int[INITIAL_CAPACITY];
+        size = 0;
     }
 }
