@@ -8,7 +8,7 @@ public class Main {
         LoanConsumer client4 = new LoanConsumer("Vasechkin", 50, 5000);
 
         LoanIssuer vasja = new LoanIssuer("Vasiliy", true, true);
-        LoanIssuer petja = new LoanIssuer("Petr", true, false);
+        LoanIssuer petja = new LoanIssuer("Petr", false, true);
         LoanIssuer anna = new LoanIssuer("Anna", false, false);
 
         LoanConsumer[] loanConsumers = {client1, client2, client3, client4};
@@ -32,10 +32,10 @@ public class Main {
             System.out.println("Employee " + anna.getName() + " does not issue a loan to " + client1.getName());
         }
 
-        if (petja.toIssue(client2)) {
-            System.out.println("Employee " + petja.getName() + " issue a loan to " + client2.getName());
+        if (petja.toIssue(client3)) {
+            System.out.println("Employee " + petja.getName() + " issue a loan to " + client3.getName());
         } else {
-            System.out.println("Employee " + petja.getName() + " does not issue a loan to " + client2.getName());
+            System.out.println("Employee " + petja.getName() + " does not issue a loan to " + client3.getName());
         }
     }
 }

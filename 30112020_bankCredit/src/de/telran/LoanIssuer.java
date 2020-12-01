@@ -41,8 +41,8 @@ public class LoanIssuer {
     public boolean isNotLazyClercButKind(LoanConsumer consumer) {
         if (consumer.getAge() < 18 || consumer.getAnnualIncome() < 20000) {
             return false;
-        }
-        return consumer.getAge() < 70 || consumer.getAnnualIncome() > 20000;
+        } else
+            return consumer.getAge() < 70 && consumer.getAnnualIncome() >= 20000;
     }
 
     public boolean isNotLazyClercAndNotKind(LoanConsumer consumer) {
