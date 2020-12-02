@@ -2,18 +2,27 @@ package de.telran;
 
 public class Picture extends Shape {
     private Shape[] shape;
+    private int count;
 
-    public Picture(char symbol, Shape[] shape) {
+    public Picture(char symbol, int count, Shape[] shape) {
         super(symbol);
         this.shape = shape;
+        this.count = count;
     }
 
     @Override
     public void draw() {
-        System.out.println("" + symbol + symbol + symbol);
-        for (int i = 0; i < shape.length; i++) {
-            shape[i].draw();
+        lineSymbol();
+        System.out.println();
+        for (Shape value : shape) {
+            value.draw();
         }
-        System.out.println("" + symbol + symbol + symbol);
+        lineSymbol();
+    }
+
+    public void lineSymbol(){
+        for (int i = 0; i < count; i++) {
+            System.out.print(symbol);
+        }
     }
 }
