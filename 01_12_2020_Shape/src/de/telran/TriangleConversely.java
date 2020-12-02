@@ -13,7 +13,7 @@ public class TriangleConversely extends Shape {
         String line = "";
         String space = " ";
         for (int i = (height * 2) - 1, i2 = 0; i > 0; i2++, i -= 2) {
-            for (int i = 0; i < i2; i++) {
+            for (int j = 0; j < i2; j++) {
                 System.out.print(space);
             }
             for (int j = 0; j < i; j++) {
