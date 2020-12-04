@@ -10,13 +10,13 @@ public class Main {
         //  ArrayList anotherString = (ArrayList) strings; // down casting это преобразование
 
         strings.addLast("Vasya");
+        strings.addLast(Integer.toString(4));
         String str1 = (String) strings.get(0);
         String str2 = (String) strings.get(1);
 
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < strings.size(); i++) {
-            res += strings.get(i);
+            res.append(strings.get(i));
         }
     }
-
 }

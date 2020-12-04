@@ -45,6 +45,7 @@ public class OurArrayList<T> implements OurList<T> {
             throw new IndexOutOfBoundsException();
         T resRemove = (T) source[index];
         System.arraycopy(source, index + 1, source, index, size - index - 1);
+        source[size -1] = null;
         size--;
         return resRemove;
     }
