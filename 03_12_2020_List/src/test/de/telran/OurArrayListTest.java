@@ -6,7 +6,7 @@ import telran.OurArrayList;
 
 import static org.junit.Assert.*;
 
-public class ArrayIntegerListTest {
+public class OurArrayListTest {
     OurArrayList<Integer> ail = new OurArrayList();
 
     @Test
