@@ -60,4 +60,15 @@ public class OurArrayList<T> implements OurList<T> {
         source = new Object[INITIAL_CAPACITY];
         size = 0;
     }
+
+    @Override
+    public boolean remove() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(T obj) {
+
+        return false;
+    }
 }
