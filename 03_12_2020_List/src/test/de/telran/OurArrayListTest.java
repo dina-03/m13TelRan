@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import telran.OurArrayList;
 
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 public class OurArrayListTest {
@@ -134,7 +136,7 @@ public class OurArrayListTest {
         for (int number : numbers) {
             ail.addLast(number);
         }
-        assertEquals((Integer)20, ail.removeById(7));
+        assertEquals((Integer) 20, ail.removeById(7));
         assertEquals(7, ail.size());
         assertThrows(IndexOutOfBoundsException.class, () -> ail.get(7));
         assertThrows(IndexOutOfBoundsException.class, () -> ail.set(7, 100));
@@ -146,8 +148,8 @@ public class OurArrayListTest {
         for (int i = 0; i < 16; i++) {
             ail.addLast(i);
         }
-        assertEquals((Integer)15, ail.removeById(15));
-        assertEquals((Integer)15, (Integer) ail.size());
+        assertEquals((Integer) 15, ail.removeById(15));
+        assertEquals((Integer) 15, (Integer) ail.size());
         assertThrows(IndexOutOfBoundsException.class, () -> ail.get(15));
         assertThrows(IndexOutOfBoundsException.class, () -> ail.set(15, 100));
         assertThrows(IndexOutOfBoundsException.class, () -> ail.removeById(15));
@@ -174,7 +176,7 @@ public class OurArrayListTest {
         for (int i = 0; i < 16; i++) {
             ail.addLast(i);
         }
-        assertEquals((Integer)0, ail.removeById(0));
+        assertEquals((Integer) 0, ail.removeById(0));
     }
 
     @Test
@@ -184,7 +186,7 @@ public class OurArrayListTest {
         for (int i = 0; i < numbers.length; i++) {
             ail.addLast(i);
         }
-        assertEquals((Integer)3, ail.removeById(middle));
+        assertEquals((Integer) 3, ail.removeById(middle));
     }
 
     @Test
@@ -192,14 +194,14 @@ public class OurArrayListTest {
         for (int i = 0; i < 18; i++) {
             ail.addLast(i);
         }
-        assertEquals((Integer)5, ail.removeById(5));
-        assertEquals((Integer)17, (Integer) ail.size());
+        assertEquals((Integer) 5, ail.removeById(5));
+        assertEquals((Integer) 17, (Integer) ail.size());
 
         for (int i = 0; i < 5; i++) {
-            assertEquals((Integer)i, ail.get(i));
+            assertEquals((Integer) i, ail.get(i));
         }
         for (int i = 5; i < ail.size(); i++) {
-            assertEquals((Integer) (i + 1),(Integer) ail.get(i));
+            assertEquals((Integer) (i + 1), (Integer) ail.get(i));
         }
     }
 
@@ -207,14 +209,14 @@ public class OurArrayListTest {
     public void testRemoveByIdElement_setToFirstIndex_correct() {
         addElementsToList(5);
         ail.set(0, 100098);
-        assertEquals((Integer)100098, ail.get(0));
+        assertEquals((Integer) 100098, ail.get(0));
     }
 
     @Test
     public void testRemoveByIdElement_setToLastIndex_correct() {
         addElementsToList(5);
         ail.set(ail.size() - 1, 400);
-        assertEquals((Integer)400, ail.get(ail.size() - 1));
+        assertEquals((Integer) 400, ail.get(ail.size() - 1));
     }
 
     @Test
@@ -222,7 +224,7 @@ public class OurArrayListTest {
         int numberOfElements = 20;
         addElementsToList(numberOfElements);
         ail.set(17, 3030);
-        assertEquals((Integer)3030, ail.get(17));
+        assertEquals((Integer) 3030, ail.get(17));
     }
 
     @Test
@@ -235,9 +237,112 @@ public class OurArrayListTest {
         ail.removeById(2);//{0,5,-10,-15}
         ail.removeById(0);//{5,-10,-15}
         assertEquals(3, ail.size());
-        assertEquals((Integer)5, ail.get(0));
+        assertEquals((Integer) 5, ail.get(0));
        /* assertEquals((T)-10, ail.get(1));
         assertEquals((T)-15, ail.get(2));*/
+    }
+
+    @Test
+    public void testForwardIterator_emptyList_correct() {
+        //String[] initialElement = {};
+        //String[] expected = {};
+        OurArrayList<String> stringOurArrayList = new OurArrayList<>();
+        Iterator<String> iterator = stringOurArrayList.forwardIterator();
+        assertFalse(iterator.hasNext());
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            iterator.next();
+        });
+    }
+
+    @Test
+    public void testForwardIterator_oneElement_correct() {
+        // String[] initialElement = {};
+        String[] expected = {"Evgeniy"};
+        OurArrayList<String> stringOurArrayList = new OurArrayList<>();
+        stringOurArrayList.addLast("Evgeniy");
+        Iterator<String> iterator = stringOurArrayList.forwardIterator();
+
+        int i = 0;
+        while (iterator.hasNext()) {
+            assertEquals(expected[i++], iterator.next());
+        }
+
+        assertEquals(1, i);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            iterator.next();
+        });
+    }
+
+    @Test
+    public void testForwardIterator_severalElement_correct() {
+        String[] initialElement = {};
+        String[] expected = {"Evgeniy", "Vladimir", "Vasiliy", "Sergey"};
+        OurArrayList<String> stringOurArrayList = new OurArrayList<>();
+        stringOurArrayList.addLast("Evgeniy");
+        stringOurArrayList.addLast("Vladimir");
+        stringOurArrayList.addLast("Vasiliy");
+        stringOurArrayList.addLast("Sergey");
+        Iterator<String> iterator = stringOurArrayList.forwardIterator();
+
+        int i = 0;
+        while (iterator.hasNext()) {
+            assertEquals(expected[i++], iterator.next());
+        }
+
+        assertEquals(4, i);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            iterator.next();
+        });
+    }
+
+    @Test
+    public void testBackwardIterator_emptyElement_correct() {
+        OurArrayList<String> stringOurArrayList = new OurArrayList<>();
+        Iterator<String> iterator = stringOurArrayList.forwardIterator();
+        assertFalse(iterator.hasNext());
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            iterator.next();
+        });
+    }
+
+
+    @Test
+    public void testBackwardIterator_oneElement_correct() {
+        String[] expected = {"Evgeniy"};
+        OurArrayList<String> stringOurArrayList = new OurArrayList<>();
+        stringOurArrayList.addLast("Evgeniy");
+        Iterator<String> iterator = stringOurArrayList.backwardIterator();
+
+        int i = 0;
+        while (iterator.hasNext()) {
+            assertEquals(expected[i++], iterator.next());
+        }
+
+        assertEquals(1, i);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            iterator.next();
+        });
+    }
+
+    @Test
+    public void testBackwardIterator_severalElement() {
+        String[] expected = {"Sergey", "Vasiliy", "Vladimir", "Evgeniy"};
+        OurArrayList<String> stringOurArrayList = new OurArrayList<>();
+        stringOurArrayList.addLast("Evgeniy");
+        stringOurArrayList.addLast("Vladimir");
+        stringOurArrayList.addLast("Vasiliy");
+        stringOurArrayList.addLast("Sergey");
+        Iterator<String> iterator = stringOurArrayList.backwardIterator();
+
+        int i = 0;
+        while (iterator.hasNext()) {
+            assertEquals(expected[i++], iterator.next());
+        }
+
+        assertEquals(4, i);
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            iterator.next();
+        });
     }
 
     private void addElementsToList(int number) {
