@@ -172,6 +172,15 @@ public class OurArrayListTest {
     }
 
     @Test
+    public void testClear_NotEmptyList() {
+        ail.addLast(1);
+        ail.addLast(2);
+        ail.addLast(3);
+        ail.clear();
+        assertEquals(0, ail.size());
+    }
+
+    @Test
     public void testRemoveZeroIndexElement_correct() {
         for (int i = 0; i < 16; i++) {
             ail.addLast(i);

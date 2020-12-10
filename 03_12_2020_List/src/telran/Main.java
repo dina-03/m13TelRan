@@ -20,7 +20,7 @@ public class Main {
         strings.addLast(Integer.toString(19));
 
         //
-       /* Iterator<String> forwardIterator = strings.new ForwardIterator();*/
+        /* Iterator<String> forwardIterator = strings.new ForwardIterator();*/
         Iterator<String> forwardIterator = strings.forwardIterator();
         while (forwardIterator.hasNext()) {
             System.out.print(forwardIterator.next() + "; ");
@@ -38,6 +38,17 @@ public class Main {
         Iterator<String> backwardIterator = strings.backwardIterator();
         while (backwardIterator.hasNext()) {
             System.out.print(backwardIterator.next() + "; ");
+        }
+
+        //Iterable
+        for (String str : strings) {
+            System.out.println(str);
+        }
+        //equivalent to:
+        Iterator<String> stringIterator = strings.iterator();
+        while (stringIterator.hasNext()) {
+            String str = stringIterator.next();
+            System.out.println(str);
         }
     }
 }

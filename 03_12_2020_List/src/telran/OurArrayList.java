@@ -12,7 +12,7 @@ public class OurArrayList<T> implements OurList<T> {
     }
 
     @Override
-    public void addLast(T element) { // O(n)
+    public void addLast(T element) { // O(1)
         if (element == null)
             throw new IndexOutOfBoundsException();
 
@@ -23,22 +23,22 @@ public class OurArrayList<T> implements OurList<T> {
         size++;
     }
 
-    void increaseCapacity() { //O(n)
+    void increaseCapacity() { //O(n) oder O(size)
         int newCapacity = source.length * 2;
         Object[] newSource = new Object[newCapacity];
         System.arraycopy(source, 0, newSource, 0, source.length);
         source = newSource;
     }
 
-    @Override
-    public T get(int index) { //O(n)
+    @Override //O(1) - the number of operation is never dependant on the number of elements in the list
+    public T get(int index) {
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException();
         return (T) source[index];
     }
 
-    @Override
-    public void set(int index, T value) { //O(n)
+    @Override //O(1) - the number of operation is never dependant on the number of elements in the list
+    public void set(int index, T value) {
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException();
         source[index] = value;
@@ -55,7 +55,7 @@ public class OurArrayList<T> implements OurList<T> {
         return resRemove;
     }
 
-    @Override
+    @Override //O(1)
     public int size() {
         return size;
     }
@@ -66,8 +66,9 @@ public class OurArrayList<T> implements OurList<T> {
         size = 0;
     }
 
-    @Override
-    public boolean remove(T obj) { //O(n^2)
+    @Override //O(n) - find the needle. And O(n) to remove it by its index
+    //total number of operations is O(n)
+    public boolean remove(T obj) {
         if (obj == null) {
             for (int i = 0; i < size; i++) {
                 if (source[i] == null) {
@@ -87,7 +88,7 @@ public class OurArrayList<T> implements OurList<T> {
     }
 
     @Override
-    public boolean contains(T obj) { //O(n^2)
+    public boolean contains(T obj) { //O(n) - to find the needle
         if (obj == null) {
             for (int i = 0; i < size; i++) {
                 if (source[i] == null) {
@@ -104,15 +105,20 @@ public class OurArrayList<T> implements OurList<T> {
     }
 
     @Override
-    public Iterator<T> forwardIterator() { //O(1)
+    public Iterator<T> forwardIterator() { //O(1) oder O(n) - is the complexity of the using the iterator
         Iterator iterator = new ForwardIterator();
         return iterator;
     }
 
     @Override
-    public Iterator<T> backwardIterator() { //O(1)
+    public Iterator<T> backwardIterator() { //O(1) oder O(n) - is the complexity of the using the iterator
         Iterator<T> iterator = new BackwardIterator<>((T[]) source, size);
         return iterator;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return forwardIterator();
     }
 
     private class ForwardIterator implements Iterator<T> {
