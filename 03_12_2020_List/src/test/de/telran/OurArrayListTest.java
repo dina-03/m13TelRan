@@ -42,7 +42,7 @@ public class OurArrayListTest {
     }
 
     @Test
-    public void testAddLAst_Equals_Two() {
+    public void testAddLast_Equals_Two() {
         ail.addLast(1);
         ail.addLast(2);
         ail.addLast(3);
@@ -249,6 +249,17 @@ public class OurArrayListTest {
         assertEquals((Integer) 5, ail.get(0));
        /* assertEquals((T)-10, ail.get(1));
         assertEquals((T)-15, ail.get(2));*/
+    }
+
+    @Test
+    public void testContains_checkIfTheItemIsInTheList() {
+        int[] arr = {1, 2, 4, 3, 7, -10};
+        for (int a : arr) {
+            ail.addLast(a);
+        }
+        assertTrue(ail.contains(7));
+        assertTrue(ail.contains(3));
+        assertTrue(ail.contains(-10));
     }
 
     @Test
