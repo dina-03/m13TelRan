@@ -75,6 +75,19 @@ class OurLinkedListTest {
     }
 
     @org.junit.jupiter.api.Test
+    void testRemoveById_addSeveralElementsAndRemoveFirst() {
+        int[] arr = {1, 2, 4, 3, 7, -10};
+        for (int a : arr) {
+            list.addLast(a);
+        }
+        assertEquals(1, list.removeById(0));
+        assertEquals(5, list.size());
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(5));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(5, 10));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.removeById(5));
+    }
+
+    @org.junit.jupiter.api.Test
     void testRemoveById_addCapacityNumberElementsAndRemoveLast() {
         for (int i = 0; i < 17; i++) {
             list.addLast(i);
