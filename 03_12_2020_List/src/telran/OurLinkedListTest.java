@@ -1,6 +1,7 @@
 package telran;
 
 import org.junit.Ignore;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
@@ -162,4 +163,114 @@ class OurLinkedListTest {
         assertTrue(list.contains(-10));
         assertTrue(list.contains(7));
     }
+
+    @Test
+    void testRemove_RemoveFirst() {
+        for (int i = 0; i < 16; i++) {
+            linkedList.addLast("symbol " + i);
+        }
+
+        assertTrue(linkedList.remove("symbol 0"));
+        assertEquals(15, linkedList.size());
+        assertEquals("symbol 15", linkedList.get(14));
+
+        for (int i = 1; i < linkedList.size(); i++) {
+            assertEquals("symbol " + (i + 1), linkedList.get(i));
+        }
+    }
+
+    @Test
+    void testRemove_RemoveLast() {
+        createStringList(16);
+        assertTrue(linkedList.remove("symbol P"));
+        assertEquals(15, linkedList.size());
+    }
+
+    @Test
+    public void testContains_First_Intermediate_Last() {
+
+        createStringList(16);
+
+        assertTrue(linkedList.contains("symbol A"));
+        assertTrue(linkedList.contains("symbol C"));
+        assertTrue(linkedList.contains("symbol P"));
+
+    }
+
+    @Test
+    public void testRemove_RemoveIntermediate() {
+
+        for (int i = 0; i < 16; i++) {
+            linkedList.addLast("symbol " + i);
+        }
+
+        String removeElement = "symbol 5";
+        assertTrue(linkedList.remove(removeElement));
+        assertEquals(15, linkedList.size());
+
+        for (int i = 0; i < 5; i++) {
+            assertEquals("symbol " + i, linkedList.get(i));
+        }
+
+        for (int i = 5; i < linkedList.size(); i++) {
+            assertEquals("symbol " + (i + 1), linkedList.get(i));
+        }
+    }
+
+    @Test
+    public void testUniversal_addSeveralElementsThenSetThenRemove_etc() {
+        addElementsToList(4);//{0,1,2,3}
+
+        list.removeById(2);//{0,1,3}
+        list.set(1, 5);//{0,5,3}
+
+        list.addLast(-10);//{0,5,3,-10}
+        list.addLast(-15);//{0,5,3,-10,-15}
+
+        list.removeById(2);//{0,5,-10,-15}
+        list.removeById(0);//{5,-10,-15}
+
+        assertEquals(3, list.size());
+
+        assertEquals(5, list.get(0));
+        assertEquals(-10, list.get(1));
+        assertEquals(-15, list.get(2));
+    }
+
+    private void createStringList(int index) {
+
+        String symbol = "symbol ";
+        for (char i = 65; i < (65 + index); i++) {
+            linkedList.addLast(symbol + i);
+        }
+    }
+
+    @Test
+    public void testClear_emptyList() {
+        list.clear();
+        assertEquals(0, list.size());
+    }
+
+    @Test
+    public void testClear_nonEmptyList() {
+        addElementsToList(20);
+
+        list.clear();
+        assertEquals(0, list.size());
+    }
+
+    @Test
+    public void testAddLast_addInitialCapacityPlusOneElements_correctSizAndCapacity() {
+        for (int i = 0; i < 17; i++) {
+            list.addLast(i);
+        }
+        assertEquals(17, list.size());
+    }
+
+    private void addElementsToList(int number) {
+        for (int j = 0; j < number; j++) {
+            list.addLast(j);
+        }
+    }
+
 }
