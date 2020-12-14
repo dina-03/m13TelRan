@@ -9,7 +9,7 @@ public class Main {
         OurArrayList<String> strings = new OurArrayList<>();
         //ArrayList anotherString = (ArrayList) strings; // down casting это преобразование
 
-       strings.addLast("Vasya");
+        strings.addLast("Vasya");
         strings.addLast(Integer.toString(4));
         strings.addLast(Integer.toString(15));
         strings.addLast(Integer.toString(6));
@@ -31,39 +31,43 @@ public class Main {
             res.append(strings.get(i));
         }*/
         System.out.println();
-       //static nested class
+        //static nested class
         Iterator<String> backwardIterator = strings.backwardIterator();
         while (backwardIterator.hasNext()) {
             System.out.print(backwardIterator.next() + "; ");
         }
 
+        System.out.println();
+
         //Iterable - что-то что можно перебрать
         for (String str : strings) {
-            System.out.println(str);
+            System.out.print(str + ", ");
         }
+        System.out.println();
         //equivalent to:
         Iterator<String> stringIterator = strings.iterator();
         while (stringIterator.hasNext()) {
             String str = stringIterator.next();
-            System.out.println(str);
+            System.out.print(str + ", ");
         }
+        System.out.println();
         LinkedList<Integer> linkedList = new LinkedList<>();
-        if (strings.contains("Vasya")){
+        if (strings.contains("Vasya")) {
             System.out.println("здесь был Вася!");
-        }else {
+        } else {
             System.out.println("здесь таких нет!!!");
         }
 
-        System.out.println();
+        System.out.println("-----------");
 
         OurLinkedList<String> list = new OurLinkedList<>();
         list.addLast("Sonya");
         list.addLast("Tonya");
         list.addLast("Danna");
         list.addLast("Jana");
-        if (list.contains("Danna")){
+        if (list.contains("Danna")) {
             System.out.println("Здесь была Яна");
-        }else {
+        } else {
             System.out.println("Здесь никого нет!!!");
         }
 

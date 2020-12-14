@@ -210,7 +210,7 @@ public class OurArrayListTest {
             assertEquals((Integer) i, ail.get(i));
         }
         for (int i = 5; i < ail.size(); i++) {
-            assertEquals((Integer) (i + 1), (Integer) ail.get(i));
+            assertEquals((Integer) (i + 1), ail.get(i));
         }
     }
 

@@ -1,7 +1,9 @@
-package telran;
+package test.de.telran;
 
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
+import telran.OurLinkedList;
+import telran.OurList;
 
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
