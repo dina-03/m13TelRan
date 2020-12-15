@@ -40,13 +40,13 @@ public class OurLinkedList<T> implements OurList<T> {
     }
 
     @Override
-    public T get(int index) {
+    public T get(int index) { // O(n)
         Node<T> needle = getNodeByIndex(index);
         return needle.element;
     }
 
     @Override
-    public void set(int index, T value) {
+    public void set(int index, T value) { //O(n)
         Node<T> needle = getNodeByIndex(index);
         needle.element = value;
     }
@@ -62,7 +62,7 @@ public class OurLinkedList<T> implements OurList<T> {
     }
 
     @Override
-    public T removeById(int index) {
+    public T removeById(int index) { //O(n)
         Node<T> res = getNodeByIndex(index);
         if (index == 0) {
             res = first;
@@ -85,7 +85,7 @@ public class OurLinkedList<T> implements OurList<T> {
     }
 
     @Override
-    public int size() {
+    public int size() { //O(1)
         return size;
     }
 
@@ -103,7 +103,7 @@ public class OurLinkedList<T> implements OurList<T> {
     }
 
     @Override
-    public boolean remove(T obj) {
+    public boolean remove(T obj) { //O(n)
         if (obj.equals(first.element)) {
             first = first.next;
             first.prev = null;
@@ -128,7 +128,7 @@ public class OurLinkedList<T> implements OurList<T> {
     }
 
     @Override
-    public boolean contains(T obj) {
+    public boolean contains(T obj) { //O(n)
 
         if (obj == null) {
             for (Node<T> node = first; node != null; node = node.next) {
@@ -148,16 +148,56 @@ public class OurLinkedList<T> implements OurList<T> {
 
     @Override
     public Iterator<T> forwardIterator() {
-        return null;
+        return new ForwardIterator();
     }
 
     @Override
     public Iterator<T> backwardIterator() {
-        return null;
+        return new BackwardIterator();
     }
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return forwardIterator();
+    }
+
+    private class ForwardIterator implements Iterator<T> {
+
+        Node<T> currentNode = first;
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+
+        @Override
+        public T next() {
+            if (currentNode == null)
+                throw new IndexOutOfBoundsException();
+
+            T res = currentNode.element;
+            currentNode = currentNode.next;
+            return res;
+        }
+    }
+
+    private class BackwardIterator implements Iterator<T> {
+
+        Node<T> currentNode = last;
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+
+        @Override
+        public T next() {
+            if (currentNode == null)
+                throw new IndexOutOfBoundsException();
+
+            T res = currentNode.element;
+            currentNode = currentNode.prev;
+            return res;
+        }
     }
 }
