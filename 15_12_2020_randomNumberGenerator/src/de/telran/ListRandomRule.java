@@ -1,18 +1,29 @@
 package de.telran;
 
-public class ListRandomRule<Integer> implements RandomRule{
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import  java.util.Random;
 
-    private int[] values;
+public class ListRandomRule implements RandomRule {
 
-    public ListRandomRule(int[] values) {
-        this.values = values;
+    // private int[] values;
+    List<Integer> values;
+    Random random = new Random();
+
+   public ListRandomRule(List<Integer> numbers) {
+        values = new ArrayList<>(numbers);
     }
 
-    public ListRandomRule(ListRandomRule<Integer> values) {
+    public ListRandomRule(int[] numbers) {
+        values = new ArrayList<>();
+        for (int number:numbers) {
+            values.add(number);
+        }
     }
 
     @Override
     public int nexInt() {
-        return 0;
+        return (int) values.get(random.nextInt(values.size()));
     }
 }
