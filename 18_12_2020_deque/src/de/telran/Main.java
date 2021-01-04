@@ -9,7 +9,7 @@ public class Main {
 	list.addLast(4);
 	list.addLast(8);
 	list.removeFirst();
-	//list.removeLast();
+	list.removeLast();
         System.out.println("get first: " + list.getFirst());
         System.out.println("get last: " + list.getLast());
     }

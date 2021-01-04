@@ -15,18 +15,29 @@ public class OurFixedArrayDeque<T> implements OurDeque<T> {
 
     @Override
     public void addFirst(T elt) {
-        if (size == source.length) {
+        if (size == capacity) {
             throw new DequeOverflowException();
         }
-        int index = (firstEltId) % capacity;
-        source[index] = elt;
+       /* firstEltId = capacity - 1;
+        firstEltId = (firstEltId - 1) % capacity;
+        source[firstEltId] = elt;
+        size++;*/
+
+        // -1 % 3 -> -1
+        if (firstEltId > 0)
+            firstEltId--;
+        else
+            firstEltId = capacity - 1;
+
+        source[firstEltId] = elt;
         size++;
     }
 
     @Override
     public T getFirst() {
-        if (firstEltId >= size || firstEltId < 0)
-            throw new DequeOverflowException();
+        //if (firstEltId >= size || firstEltId < 0)
+        if (size == 0)
+            throw new EmptyDequeException();
         return (T) source[firstEltId];
     }
 
@@ -44,7 +55,7 @@ public class OurFixedArrayDeque<T> implements OurDeque<T> {
 
     @Override
     public void addLast(T elt) {
-        if (size == source.length) {
+        if (size == capacity) {
             throw new DequeOverflowException();
         }
         int index = (firstEltId + size) % capacity;
