@@ -7,7 +7,8 @@ public class Main {
         mStack.addLast(25);
         mStack.addLast(45);
         mStack.addLast(38);
-        mStack.removeLast();
+        mStack.addLast(105);
+       // mStack.removeLast();
         System.out.println("Stack: ");
         while (!mStack.isEmpty()){
             Object value = mStack.removeLast();
