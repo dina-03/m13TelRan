@@ -2,7 +2,7 @@ package de.telran;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -397,10 +397,27 @@ public abstract class OurListTest {
         });
     }
 
+    @Test
+    public void testSortListByNumber() {
+        list.addLast(24);
+        list.addLast(6);
+        list.addLast(8);
+        list.addLast(33);
+       // Integer[] sortList = {6, 8, 24, 33};
+        Comparator<Integer> comparator = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        };
+        assertEquals(4, list.sort(comparator));
+    }
+
     /**
      * The function fills the list with the numbers from 0 to (number - 1)
      *
-     * @param number the amount of numbers to be inserted into the list
+     * @param number
+     *         the amount of numbers to be inserted into the list
      */
     private void addElementsToList(int number) {
         for (int j = 0; j < number; j++) {

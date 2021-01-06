@@ -1,5 +1,6 @@
 package de.telran;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class OurLinkedList<T> implements OurList<T> {
@@ -188,5 +189,30 @@ public class OurLinkedList<T> implements OurList<T> {
             currentNode = currentNode.prev;
             return res;
         }
+    }
+
+    @Override
+    public int sort(Comparator<T> comparator) {
+        Object[] copy = new Object[size];
+        int i = 0;
+        for (T elt : this) {
+            copy[i++] = elt;
+        }
+
+        for (int j = 0; j < copy.length; j++) {
+            for (int k = 1; k < (copy.length - j); k++) {
+                if (comparator.compare(getNodeByIndex(k - 1).element, getNodeByIndex(k).element) > 0) {
+                    Object temp = copy[k - 1];
+                    copy[k - 1] = copy[k];
+                    copy[k] = temp;
+                }
+            }
+        }
+
+        this.clear();
+        for (Object elt : copy) {
+            this.addLast((T) elt);
+        }
+        return i;
     }
 }

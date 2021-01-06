@@ -1,5 +1,7 @@
 package de.telran;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class OurArrayList<T> implements OurList<T> {
@@ -176,5 +178,31 @@ public class OurArrayList<T> implements OurList<T> {
             currentIndex--;
             return res;
         }
+    }
+
+    @Override
+    public int sort(Comparator<T> comparator) {
+        Object[] copy = new Object[size];
+
+        int i = 0;
+        for (T elt : this) {
+            copy[i++] = elt;
+        }
+
+        for (int j = 0; j < copy.length; j++) {
+            for (int k = 1; k < copy.length - j; k++) {
+                if (comparator.compare(get(k-1),get(k) ) > 0){
+                    Object temp = copy[k - 1];
+                    copy[k - 1] = copy[k];
+                    copy[k] = temp;
+                }
+            }
+        }
+
+        this.clear();
+        for (Object elt : copy) {
+            this.addLast((T) elt);
+        }
+        return i;
     }
 }
