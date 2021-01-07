@@ -36,5 +36,14 @@ public class Main {
             System.out.print(a);
         }
         System.out.println();
+
+        System.out.println("----------");
+
+        autos.sort(new MileageComparator());
+        System.out.println(autos.toString());
+        System.out.println();
+
+        autos.sort(new YearComparator());
+        System.out.println(autos.toString());
     }
 }
