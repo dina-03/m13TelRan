@@ -7,12 +7,14 @@ public interface OurList<T> extends Iterable<T> {
     /**
      * Adds the element to the 'this' instance
      *
-     * @param element - to add
+     * @param element
+     *         - to add
      */
     void addLast(T element);
 
     /**
-     * @param index - index of the element to return. It must be in the range between 0 and (size-1).
+     * @param index
+     *         - index of the element to return. It must be in the range between 0 and (size-1).
      * @return returns the element by the index
      */
     T get(int index);
@@ -20,15 +22,18 @@ public interface OurList<T> extends Iterable<T> {
     /**
      * sets the value to the index place in the 'this' instance
      *
-     * @param index the place to set
-     * @param value the value to set
+     * @param index
+     *         the place to set
+     * @param value
+     *         the value to set
      */
     void set(int index, T value);
 
     /**
      * removes the element by the index
      *
-     * @param index the index of the element to remove
+     * @param index
+     *         the index of the element to remove
      * @return the value of the removed element
      */
     T removeById(int index);
@@ -47,13 +52,15 @@ public interface OurList<T> extends Iterable<T> {
      * removes the obj if there is an element in the list which 'equals' to the obj. The method
      * must remove only first such element.
      *
-     * @param obj to remove
+     * @param obj
+     *         to remove
      * @return true if the object was found and removed, false otherwise
      */
     boolean remove(T obj);
 
     /**
-     * @param obj to check
+     * @param obj
+     *         to check
      * @return true if the obj is present in this list (according to the method 'equals')
      */
     boolean contains(T obj);
@@ -70,8 +77,14 @@ public interface OurList<T> extends Iterable<T> {
 
     /**
      * sorts the list according to the 'comparator' rule
-     * @param comparator the rule to sort the list
+     *
+     * @param comparator
+     *         the rule to sort the list
      * @return
      */
     int sort(Comparator<T> comparator);
+
+    T max(Comparator<T> comparator);
+
+    T min(Comparator<T> comparator);
 }

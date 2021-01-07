@@ -401,16 +401,34 @@ public abstract class OurListTest {
     public void testSortListByNumber() {
         list.addLast(24);
         list.addLast(6);
-        list.addLast(8);
+        list.addLast(-8);
         list.addLast(33);
-       // Integer[] sortList = {6, 8, 24, 33};
+        /* list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });*/
         Comparator<Integer> comparator = new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o1 - o2;
             }
         };
-        assertEquals(4, list.sort(comparator));
+        list.sort(comparator);
+        //list.sort(new IntegerComparator());
+        int[] expected = {-8, 6, 24, 33};
+        int i = 0;
+        for (int num:list) {
+            assertEquals(expected[i++], num);
+        }
+    }
+
+    class IntegerComparator implements Comparator<Integer> {
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o1 - o2;
+        }
     }
 
     /**

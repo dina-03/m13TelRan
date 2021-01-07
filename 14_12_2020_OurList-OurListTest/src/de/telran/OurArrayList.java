@@ -189,7 +189,7 @@ public class OurArrayList<T> implements OurList<T> {
             copy[i++] = elt;
         }
 
-        for (int j = 0; j < copy.length; j++) {
+        /*for (int j = 0; j < copy.length; j++) {
             for (int k = 1; k < copy.length - j; k++) {
                 if (comparator.compare(get(k-1),get(k) ) > 0){
                     Object temp = copy[k - 1];
@@ -197,6 +197,17 @@ public class OurArrayList<T> implements OurList<T> {
                     copy[k] = temp;
                 }
             }
+        }*/
+        for (int j = 0; j < size; j++) {
+            int minId = j;
+            for (int k = j; k < size; k++) {
+                if (comparator.compare((T) copy[minId], (T) copy[k]) > 0) {
+                    minId = k;
+                }
+            }
+            Object temp = copy[j];
+            copy[j] = copy[minId];
+            copy[minId] = temp;
         }
 
         this.clear();
@@ -204,5 +215,15 @@ public class OurArrayList<T> implements OurList<T> {
             this.addLast((T) elt);
         }
         return i;
+    }
+
+    @Override
+    public T max(Comparator<T> comparator) {
+        return null;
+    }
+
+    @Override
+    public T min(Comparator<T> comparator) {
+        return null;
     }
 }
