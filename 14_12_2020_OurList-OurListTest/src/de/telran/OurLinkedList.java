@@ -191,7 +191,7 @@ public class OurLinkedList<T> implements OurList<T> {
         }
     }
 
-    @Override
+    /*@Override
     public int sort(Comparator<T> comparator) {
         Object[] copy = new Object[size];
         int i = 0;
@@ -199,7 +199,7 @@ public class OurLinkedList<T> implements OurList<T> {
             copy[i++] = elt;
         }
 
-       /* for (int j = 0; j < copy.length; j++) {
+       *//* for (int j = 0; j < copy.length; j++) {
             for (int k = 1; k < (copy.length - j); k++) {
                 if (comparator.compare(getNodeByIndex(k - 1).element, getNodeByIndex(k).element) > 0) {
                     Object temp = copy[k - 1];
@@ -207,7 +207,7 @@ public class OurLinkedList<T> implements OurList<T> {
                     copy[k] = temp;
                 }
             }
-        }*/
+        }*//*
 
         for (int j = 0; j < size; j++) {
             int minId = j;
@@ -236,5 +236,5 @@ public class OurLinkedList<T> implements OurList<T> {
     @Override
     public T min(Comparator<T> comparator) {
         return null;
-    }
+    }*/
 }

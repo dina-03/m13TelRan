@@ -3,6 +3,7 @@ package de.telran;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class OurArrayList<T> implements OurList<T> {
     private static final int INITIAL_CAPACITY = 16;
@@ -180,7 +181,7 @@ public class OurArrayList<T> implements OurList<T> {
         }
     }
 
-    @Override
+   /* @Override
     public int sort(Comparator<T> comparator) {
         Object[] copy = new Object[size];
 
@@ -189,7 +190,7 @@ public class OurArrayList<T> implements OurList<T> {
             copy[i++] = elt;
         }
 
-        /*for (int j = 0; j < copy.length; j++) {
+        *//*for (int j = 0; j < copy.length; j++) {
             for (int k = 1; k < copy.length - j; k++) {
                 if (comparator.compare(get(k-1),get(k) ) > 0){
                     Object temp = copy[k - 1];
@@ -197,7 +198,7 @@ public class OurArrayList<T> implements OurList<T> {
                     copy[k] = temp;
                 }
             }
-        }*/
+        }*//*
         for (int j = 0; j < size; j++) {
             int minId = j;
             for (int k = j; k < size; k++) {
@@ -219,11 +220,28 @@ public class OurArrayList<T> implements OurList<T> {
 
     @Override
     public T max(Comparator<T> comparator) {
-        return null;
+        if (size == 0)
+            throw new NoSuchElementException();
+
+        Iterator<T> iterator = iterator();
+
+        *//*T max = iterator.next();          -> первый вариант
+        while (iterator.hasNext()) {
+            T currentElt = iterator.next();
+            if (comparator.compare(currentElt, max) > 0)
+                max = currentElt;
+        }*//*
+
+        T max = this.get(0);
+        for (T currentElt : this) {
+            if (comparator.compare(currentElt, max) > 0)
+                max = currentElt;
+        }
+        return max;
     }
 
     @Override
     public T min(Comparator<T> comparator) {
-        return null;
-    }
+        return max(comparator.reversed());
+    }*/
 }

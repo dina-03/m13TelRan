@@ -424,6 +424,34 @@ public abstract class OurListTest {
         }
     }
 
+    @Test
+    public void test_max_severalInt() {
+        int[] test = {6, -2, -8, 9, 0, -1, 13};
+        for (int i : test) {
+            list.addLast(i);
+        }
+        assertEquals(13, list.max(new IntegerComparator()));
+    }
+
+    @Test
+    public void test_min_severalInt() {
+        int[] test = {6, -2, -8, 9, 0, -1, 13};
+        for (int i : test) {
+            list.addLast(i);
+        }
+        assertEquals(-8, list.min(new IntegerComparator()));
+    }
+
+    @Test
+    public void test_max_emptyList() {
+        assertThrows(NoSuchElementException.class, () -> list.max(new IntegerComparator()));
+    }
+
+    @Test
+    public void test_min_emptyList() {
+        assertThrows(NoSuchElementException.class, () -> list.min(new IntegerComparator()));
+    }
+
     class IntegerComparator implements Comparator<Integer> {
         @Override
         public int compare(Integer o1, Integer o2) {

@@ -2,6 +2,7 @@ package de.telran;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public interface OurList<T> extends Iterable<T> {
     /**
@@ -82,9 +83,64 @@ public interface OurList<T> extends Iterable<T> {
      *         the rule to sort the list
      * @return
      */
-    int sort(Comparator<T> comparator);
+    default int sort(Comparator<T> comparator) {
+        Object[] copy = new Object[size()];
 
-    T max(Comparator<T> comparator);
+        int i = 0;
+        for (T elt : this) {
+            copy[i++] = elt;
+        }
 
-    T min(Comparator<T> comparator);
+        /*for (int j = 0; j < copy.length; j++) {
+            for (int k = 1; k < copy.length - j; k++) {
+                if (comparator.compare(get(k-1),get(k) ) > 0){
+                    Object temp = copy[k - 1];
+                    copy[k - 1] = copy[k];
+                    copy[k] = temp;
+                }
+            }
+        }*/
+        for (int j = 0; j < size(); j++) {
+            int minId = j;
+            for (int k = j; k < size(); k++) {
+                if (comparator.compare((T) copy[minId], (T) copy[k]) > 0) {
+                    minId = k;
+                }
+            }
+            Object temp = copy[j];
+            copy[j] = copy[minId];
+            copy[minId] = temp;
+        }
+
+        this.clear();
+        for (Object elt : copy) {
+            this.addLast((T) elt);
+        }
+        return i;
+    }
+
+    default T max(Comparator<T> comparator) {
+        if (size() == 0)
+            throw new NoSuchElementException();
+
+        Iterator<T> iterator = iterator();
+
+        /*T max = iterator.next();          -> первый вариант
+        while (iterator.hasNext()) {
+            T currentElt = iterator.next();
+            if (comparator.compare(currentElt, max) > 0)
+                max = currentElt;
+        }*/
+
+        T max = this.get(0);
+        for (T currentElt : this) {
+            if (comparator.compare(currentElt, max) > 0)
+                max = currentElt;
+        }
+        return max;
+    }
+
+    default T min(Comparator<T> comparator) {
+        return max(comparator.reversed());
+    }
 }
