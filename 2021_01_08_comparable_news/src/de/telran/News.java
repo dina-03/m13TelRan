@@ -1,5 +1,9 @@
 package de.telran;
 
+/**
+ * The natural ordering is as follows:
+ * The news item has larger priority, if it is more positive and shorter
+ */
 public class News implements Comparable<News> {
 
     String text;
