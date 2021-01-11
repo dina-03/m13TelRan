@@ -459,6 +459,8 @@ public abstract class OurListTest {
         }
     }
 
+
+
     /**
      * The function fills the list with the numbers from 0 to (number - 1)
      *
@@ -478,4 +480,49 @@ public abstract class OurListTest {
             stringList.addLast(symbol + i);
         }
     }
+
+    @Test
+    public void test_maxWithComparator_severalString() {
+        stringList.addLast("Evgeny");
+        stringList.addLast("Borisovich");
+        stringList.addLast("Vladislava");
+        stringList.addLast("Evgenievna");
+        assertEquals("Vladislava", stringList.max(new StringComparator()));
+    }
+
+    @Test
+    public void testMinWithComparator_severalString() {
+        stringList.addLast("Evgeny");
+        stringList.addLast("Borisovich");
+        stringList.addLast("Vladislava");
+        stringList.addLast("Evgenievna");
+        assertEquals("Borisovich", stringList.min(new StringComparator()));
+    }
+
+    @Test
+    public void test_max_severalString() {
+        stringList.addLast("Evgeny");
+        stringList.addLast("Borisovich");
+        stringList.addLast("Vladislava");
+        stringList.addLast("Evgenievna");
+        assertEquals("Vladislava", stringList.max());
+    }
+
+    @Test
+    public void testMin_severalString() {
+        stringList.addLast("Evgeny");
+        stringList.addLast("Borisovich");
+        stringList.addLast("Vladislava");
+        stringList.addLast("Evgenievna");
+        assertEquals("Borisovich", stringList.min());
+    }
+
+    class StringComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.compareTo(o2);
+        }
+    }
+
 }

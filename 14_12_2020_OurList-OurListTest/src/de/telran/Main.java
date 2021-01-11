@@ -1,5 +1,6 @@
 package de.telran;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
@@ -34,7 +35,27 @@ public class Main {
             }
         };
         arrayList.sort(comparator2);
-        for (Integer in:arrayList) {
+        for (Integer in : arrayList) {
+            System.out.print(in + " ");
+        }
+        System.out.println();
+        System.out.println("-------");
+        OurList<Integer> integerOurList = new OurArrayList<>();
+        integerOurList.addLast(12);
+        integerOurList.addLast(15);
+        integerOurList.addLast(1);
+        integerOurList.addLast(38);
+        integerOurList.addLast(358);
+        integerOurList.addLast(-8);
+        for (Integer in : integerOurList) {
+            System.out.print(in + " ");
+        }
+        System.out.println();
+        System.out.println("min: " + integerOurList.min());
+        System.out.println("max: " + integerOurList.max());
+        integerOurList.sort();
+        System.out.println("sort:");
+        for (Integer in : integerOurList) {
             System.out.print(in + " ");
         }
     }

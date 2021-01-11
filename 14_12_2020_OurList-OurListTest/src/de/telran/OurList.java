@@ -140,7 +140,56 @@ public interface OurList<T> extends Iterable<T> {
         return max;
     }
 
+    /**
+     * The method uses the natural ordering of the element inside the list.
+     * Meaning the elements must be Comparable
+     *
+     * @return max according to the natural ordering
+     */
+
+    default T max() {
+        if (size() == 0)
+            throw new NoSuchElementException();
+
+        T max = this.get(0);
+        for (T currentElt : this) {
+            Comparable<T> compCurrentElement = (Comparable<T>) currentElt;
+            if (compCurrentElement.compareTo(max) > 0)
+                max = currentElt;
+        }
+        return max;
+    }
+
     default T min(Comparator<T> comparator) {
         return max(comparator.reversed());
+    }
+
+    default T min() {
+        Comparator<T> comparator = new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                Comparable<T> comparable01 = (Comparable<T>) o1;
+                return comparable01.compareTo(o2);
+            }
+        };
+
+        /*T min = this.get(0);
+        for (T currentElt : this) {
+            Comparable<T> compCurrentElement = (Comparable<T>) currentElt;
+            if (compCurrentElement.compareTo(min) < 0)
+                min = currentElt;
+        }*/
+        return min(comparator);
+    }
+
+    default void sort() {
+        Comparator<T> comparator = new Comparator<T>() {
+            @Override
+            public int compare(T o1, T o2) {
+                Comparable<T> comparable01 = (Comparable<T>) o1;
+                return comparable01.compareTo(o2);
+            }
+        };
+        sort(comparator);
     }
 }
