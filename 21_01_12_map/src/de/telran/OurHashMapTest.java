@@ -228,6 +228,11 @@ class OurHashMapTest {
     }
 
     @Test
+    public void testGetContains_emptyObject_notExistKey() {
+        assertNull(key.get(5));
+    }
+
+    @Test
     public void testForwardIterator_severalElements() {
         Auto opel = new Auto("grey", "Opel");
         Auto mazda = new Auto("red", "Mazda");
