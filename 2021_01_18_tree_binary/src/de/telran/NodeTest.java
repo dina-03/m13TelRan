@@ -17,8 +17,29 @@ class NodeTest {
     Node root = new Node(two, five); // 4 root
 
     @Test
-    public void test(){
+    public void testGetHeight(){
+        assertEquals(0,root.getHeight(nine));
+        assertEquals(1,root.getHeight(two));
+        assertEquals(0,root.getHeight(three));
+        assertEquals(2,root.getHeight(six));
+        assertEquals(1,root.getHeight(eight));
+        assertEquals(4,root.getHeight(root));
+        assertEquals(0,root.getHeight(one));
+        assertEquals(0,root.getHeight(seven));
+        assertEquals(3,root.getHeight(five));
+    }
 
+    @Test
+    public void testGetVertexNumber(){
+        assertEquals(1,root.getVertexNumber(nine));
+        assertEquals(2,root.getVertexNumber(eight));
+        assertEquals(1,root.getVertexNumber(seven));
+        assertEquals(4,root.getVertexNumber(six));
+        assertEquals(5,root.getVertexNumber(five));
+        assertEquals(1,root.getVertexNumber(three));
+        assertEquals(1,root.getVertexNumber(one));
+        assertEquals(3,root.getVertexNumber(two));
+        assertEquals(9,root.getVertexNumber(root));
     }
 
 }
