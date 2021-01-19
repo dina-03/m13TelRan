@@ -27,12 +27,14 @@ public class Node {
         if (root == null)
             return 0;
         else {
+
             int leftVertex = getVertexNumber(root.left);
             int rightVertex = getVertexNumber(root.right);
-            if (leftVertex > rightVertex)
+            return leftVertex + rightVertex + 1;
+           /* if (leftVertex > rightVertex)
                 return (leftVertex + 1) + rightVertex;
             else
-                return (rightVertex + 1) + leftVertex;
+                return (rightVertex + 1) + leftVertex;*/
         }
     }
 }
