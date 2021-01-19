@@ -27,7 +27,6 @@ public class Node {
         if (root == null)
             return 0;
         else {
-
             int leftVertex = getVertexNumber(root.left);
             int rightVertex = getVertexNumber(root.right);
             return leftVertex + rightVertex + 1;
