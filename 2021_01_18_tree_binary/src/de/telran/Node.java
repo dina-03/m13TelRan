@@ -31,10 +31,6 @@ public class Node {
             int leftVertex = getVertexNumber(root.left);
             int rightVertex = getVertexNumber(root.right);
             return leftVertex + rightVertex + 1;
-           /* if (leftVertex > rightVertex)
-                return (leftVertex + 1) + rightVertex;
-            else
-                return (rightVertex + 1) + leftVertex;*/
         }
     }
 }
