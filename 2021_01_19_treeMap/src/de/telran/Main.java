@@ -1,8 +1,7 @@
 package de.telran;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.awt.*;
+import java.util.*;
 
 public class Main {
 
@@ -16,6 +15,7 @@ public class Main {
         Auto anotherGreyOpel = new Auto("Grey", "Opel");
         String value = map.get(anotherGreyOpel);
         System.out.println(value);//
+
     }
 
     static void fillMap(Map<Auto, String> map) {
@@ -36,8 +36,10 @@ class Auto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Auto)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Auto))
+            return false;
         Auto auto = (Auto) o;
         return Objects.equals(make, auto.make) &&
                 Objects.equals(color, auto.color);

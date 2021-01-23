@@ -8,7 +8,7 @@ public class OurTreeMap<K, V> implements OurMap<K, V> {
     private static class Node<K, V> {
         Node<K, V> left;
         Node<K, V> right;
-        Node<K, V> parent;
+        Node<K, V> parent; //родительский
         K key;
         V value;
 
@@ -43,25 +43,134 @@ public class OurTreeMap<K, V> implements OurMap<K, V> {
 
     @Override
     public V put(K key, V value) {
-        Node<K, V> node = new Node<>(key, value, null);
-        if (root == null) {
-            root = node;
-            return null;
+        if (key == null)
+            throw new NullPointerException();
+
+        Node<K, V> current = root;
+        Node<K, V> parent = null;
+        int compared = 0;
+
+        while (current != null) {
+            parent = current;
+            compared = keyComparator.compare(key, current.key);
+            if (compared > 0)
+                current = current.right;
+            else if (compared < 0)
+                current = current.left;
+            else {
+                V oldValue = current.value;
+                current.value = value;
+                return oldValue;
+            }
         }
 
-        Node<K, V> parent = root;
+        Node<K, V> newNode = new Node<>(key, value, parent);
+        if (compared > 0) {
+            parent.right = newNode;
+        } else if (compared < 0) {
+            parent.left = newNode;
+        } else
+            root = newNode;
 
+        size++;
         return null;
     }
 
     @Override
     public V get(K key) {
+        Node<K, V> node = findNode(key);
+        return node == null ? null : node.value;
+    }
+
+    private Node<K, V> findNode(K key) {
+
+        Node<K, V> current = root;
+
+        while (current != null) {
+            int compared = keyComparator.compare(key, current.key);
+            if (compared > 0)
+                current = current.right;
+            else if (compared < 0)
+                current = current.left;
+            else {
+                return current;
+            }
+        }
         return null;
     }
 
     @Override
     public V remove(K key) {
-        return null;
+        Node<K, V> nodeToRemove = findNode(key);
+        if (nodeToRemove == null)
+            return null;
+        size--;
+
+        if (nodeToRemove.left != null && nodeToRemove.right != null)
+            return junctionRemove(nodeToRemove);
+        return linearRemove(nodeToRemove);
+    }
+
+    private V linearRemove(Node<K, V> nodeToRemove) {
+
+        Node<K, V> child = nodeToRemove.left == null ? nodeToRemove.right : nodeToRemove.left;
+        Node<K, V> parent = nodeToRemove.parent;
+        V res = nodeToRemove.value;
+
+        if (parent == null) {
+            root = child;
+        } else if (parent.left == nodeToRemove) {
+            parent.left = child;
+        } else {
+            parent.right = child;
+        }
+
+        if (child != null) {
+            child.parent = parent;
+        }
+
+        cleanNode(nodeToRemove);
+        return res;
+    }
+
+    private void cleanNode(Node<K, V> nodeToRemove) {
+        nodeToRemove.key = null;
+        nodeToRemove.value = null;
+        nodeToRemove.left = null;
+        nodeToRemove.right = null;
+        nodeToRemove.parent = null;
+    }
+
+    private V junctionRemove(Node<K, V> nodeToRemove) {
+        Node<K, V> nextNode = findNextInRightBranch(nodeToRemove);
+
+        V oldValue = nodeToRemove.value;
+        nodeToRemove.key = nextNode.key;
+        nodeToRemove.value = nextNode.value;
+
+        linearRemove(nextNode);
+
+        return oldValue;
+    }
+
+    private Node<K, V> findNextInRightBranch(Node<K, V> node) {
+        Node<K, V> current = node.right;
+        while (current.left != null)
+            current = current.left;
+
+        return current;
+    }
+
+    private Node<K, V> findNextRightParent(Node<K, V> current) {
+        while (current.parent != null && current.parent.left != current) {
+            current = current.parent;
+        }
+        return current.parent;
+    }
+
+    @Override
+    public boolean containsKey(K key) {
+        return findNode(key) != null;
     }
 
     @Override
@@ -69,13 +178,55 @@ public class OurTreeMap<K, V> implements OurMap<K, V> {
         return size;
     }
 
+    private Node<K, V> findMinNode() {
+        Node<K, V> current = root;
+
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current;
+    }
+
     @Override
     public Iterator keyIterator() {
-        return null;
+        return new KexIterator();
     }
 
     @Override
     public Iterator valueIterator() {
         return null;
+    }
+
+    private class KexIterator implements Iterator<K> {
+
+        Node<K, V> current;
+        int currentElementNumber;
+
+        public KexIterator() {
+            if (size > 0)
+                current = findMinNode();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentElementNumber < size;
+        }
+
+        @Override
+        public K next() {
+
+            if (currentElementNumber == size)
+                throw new IndexOutOfBoundsException();
+
+            K res = current.key;
+
+            if (current.right != null)
+                current = findNextInRightBranch(current);
+            else
+                current = findNextRightParent(current);
+
+            currentElementNumber++;
+            return res;
+        }
     }
 }

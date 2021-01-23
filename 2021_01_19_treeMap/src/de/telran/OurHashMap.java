@@ -53,6 +53,11 @@ public class OurHashMap<K, V> implements OurMap<K, V> {
         return null;
     }
 
+    @Override
+    public boolean containsKey(K key) {
+        return false;
+    }
+
     private void resize() {
         capacity = capacity * 2;
         Pair<K, V>[] newSource = new Pair[capacity];
