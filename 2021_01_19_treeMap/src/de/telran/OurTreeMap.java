@@ -189,20 +189,34 @@ public class OurTreeMap<K, V> implements OurMap<K, V> {
 
     @Override
     public Iterator keyIterator() {
-        return new KexIterator();
+        return new KeyIterator();
     }
 
     @Override
     public Iterator valueIterator() {
-        return null;
+        return new ValueIterator();
     }
 
-    private class KexIterator implements Iterator<K> {
+    private class ValueIterator implements Iterator<V> {
+        Iterator<K> keyIterator = new KeyIterator();
+
+        @Override
+        public boolean hasNext() {
+            return keyIterator.hasNext();
+        }
+
+        @Override
+        public V next() {
+            return get(keyIterator.next());
+        }
+    }
+
+    private class KeyIterator implements Iterator<K> {
 
         Node<K, V> current;
         int currentElementNumber;
 
-        public KexIterator() {
+        public KeyIterator() {
             if (size > 0)
                 current = findMinNode();
         }

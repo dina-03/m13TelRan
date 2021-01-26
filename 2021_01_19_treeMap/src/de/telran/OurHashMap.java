@@ -1,6 +1,8 @@
 package de.telran;
 
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  * The implementation of OurMap can not contain null as a key.
@@ -55,7 +57,7 @@ public class OurHashMap<K, V> implements OurMap<K, V> {
 
     @Override
     public boolean containsKey(K key) {
-        return false;
+        return find(key) != null;
     }
 
     private void resize() {
@@ -222,4 +224,5 @@ public class OurHashMap<K, V> implements OurMap<K, V> {
             this.next = next;
         }
     }
+
 }
