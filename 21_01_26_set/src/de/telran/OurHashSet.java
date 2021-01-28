@@ -9,9 +9,6 @@ public class OurHashSet<T> implements OurSet<T> {
     private final OurHashMap<T, Object> source;
     private final Object stubValue = new Object();
 
-   // OurHashMap map = new OurHashMap();
-
-
     public OurHashSet() {
         source = new OurHashMap<>();
     }

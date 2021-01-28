@@ -1,9 +1,7 @@
 package de.telran;
 
 import de.telran.map.OurTreeMap;
-
 import java.util.Iterator;
-import java.util.TreeMap;
 
 public class OurTreeSet<T> implements OurSet<T>{
 
@@ -17,7 +15,7 @@ public class OurTreeSet<T> implements OurSet<T>{
 
     @Override
     public boolean remove(T elt) {
-        return source.put(elt, stubValue) != null;
+        return source.remove(elt) != null;
     }
 
     @Override

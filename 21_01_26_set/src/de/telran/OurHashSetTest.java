@@ -1,13 +1,20 @@
 package de.telran;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OurHashSetTest {
-    OurHashSet<String> hashSet = new OurHashSet<>();
+class OurHashSetTest extends OurSetTest {
+    @BeforeEach
+    public void init() {
+        set = new OurHashSet<>();
+        another = new OurHashSet<>();
+    }
+
+    /*OurHashSet<String> hashSet = new OurHashSet<>();
     OurHashSet<Integer> hashIntSet = new OurHashSet<>();
     OurHashSet<Integer> set2 = new OurHashSet<>();
 
@@ -339,5 +346,5 @@ class OurHashSetTest {
             i++;
         }
         assertEquals(7, i);
-    }
+    }*/
 }
