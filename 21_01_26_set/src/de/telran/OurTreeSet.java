@@ -1,20 +1,14 @@
 package de.telran;
 
-import de.telran.map.OurHashMap;
-import java.util.HashSet;
+import de.telran.map.OurTreeMap;
+
 import java.util.Iterator;
+import java.util.TreeMap;
 
-public class OurHashSet<T> implements OurSet<T> {
+public class OurTreeSet<T> implements OurSet<T>{
 
-    private final OurHashMap<T, Object> source;
+    OurTreeMap<T, Object> source = new OurTreeMap<>();
     private final Object stubValue = new Object();
-
-   // OurHashMap map = new OurHashMap();
-
-
-    public OurHashSet() {
-        source = new OurHashMap<>();
-    }
 
     @Override
     public boolean add(T elt) {
@@ -23,7 +17,7 @@ public class OurHashSet<T> implements OurSet<T> {
 
     @Override
     public boolean remove(T elt) {
-        return source.remove(elt) != null;
+        return source.put(elt, stubValue) != null;
     }
 
     @Override
@@ -45,7 +39,7 @@ public class OurHashSet<T> implements OurSet<T> {
 
     @Override
     public void retainAll(OurSet<T> another) {
-        OurSet<T> temp = new OurHashSet<>();
+        OurSet<T> temp = new OurTreeSet<>();
         for (T t : this) {
             if (!another.contains(t))
                 temp.add(t);
@@ -56,7 +50,7 @@ public class OurHashSet<T> implements OurSet<T> {
     @Override
     public void removeAll(OurSet<T> another) {
         for (T t : another) {
-            remove(t);
+            this.remove(t);
         }
     }
 
