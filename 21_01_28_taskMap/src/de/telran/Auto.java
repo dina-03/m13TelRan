@@ -44,7 +44,7 @@ public class Auto {
 
     //Есть лист объектов класса Auto (make, color). Вернуть Map, ключами которого являются марки автомобилей,
     // а значениями являются списки автомобилей этой марки
-    public HashMap<String, List<Auto>> groupAutosByMake(List<Auto> autos) {
+   /* public HashMap<String, List<Auto>> groupAutosByMake(List<Auto> autos) {
 
         HashMap<String, List<Auto>> autosGroup = new HashMap<>();
         HashSet<String> key = new HashSet<>();
@@ -63,5 +63,5 @@ public class Auto {
             autosGroup.put(s, v);
         }
         return autosGroup;
-    }
+    }*/
 }
