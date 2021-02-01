@@ -1,0 +1,4 @@
+Hello world!
+Another string :)
+14678
+0
