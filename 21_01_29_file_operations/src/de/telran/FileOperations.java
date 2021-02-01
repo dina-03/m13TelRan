@@ -82,7 +82,7 @@ public class FileOperations {
             pw.close();
         }*/
         try (FileOutputStream fos = new FileOutputStream(filename)) {
-            if (numbers == numbers || numbers.size() == 0)
+            if (numbers == null || numbers.size() == 0)
                 return;
 
             StringBuilder sb = new StringBuilder();
@@ -93,7 +93,7 @@ public class FileOperations {
             while (iterator.hasNext()) {
                 sb.append(" ").append(iterator.next());
             }
-            fos.write(toString().getBytes());
+            fos.write(sb.toString().getBytes());
         }
     }
 
@@ -106,9 +106,10 @@ public class FileOperations {
     public List<Integer> readInts(String filename) throws IOException {
         try (FileInputStream fis = new FileInputStream(filename)) {
             byte[] bytes = new byte[fis.available()];
+            fis.read(bytes);
             String input = new String(bytes);
 
-            String[] stringNumbers = input.split("\\* ");
+            String[] stringNumbers = input.split(" ");
             List<Integer> res = new ArrayList<>();
             for (String stringNumber : stringNumbers) {
                 res.add(Integer.parseInt(stringNumber));
