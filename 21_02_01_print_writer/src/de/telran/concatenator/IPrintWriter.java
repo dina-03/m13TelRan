@@ -14,7 +14,6 @@ public class IPrintWriter implements IPrint {
             for (String string : strings) {
                 pw.println(string);
             }
-            pw.close();
         }
     }
 }

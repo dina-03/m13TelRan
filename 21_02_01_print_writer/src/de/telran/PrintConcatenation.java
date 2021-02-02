@@ -78,6 +78,6 @@ public class PrintConcatenation {
 
         IPrintTest test1;
         test1 = new IPrintTest(printStream);
-        test1.test(100000, stringList, filenamePS);
+        test1.test(1000000, stringList, filenamePS);
     }
 }
