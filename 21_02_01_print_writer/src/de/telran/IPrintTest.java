@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class IPrintTest {
-    private IConcatenator concatenator;
+    private IPrint concatenator;
 
-    public IPrintTest(IConcatenator concatenator) {
+    public IPrintTest(IPrint concatenator) {
         this.concatenator = concatenator;
     }
 

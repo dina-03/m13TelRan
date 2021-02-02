@@ -69,8 +69,8 @@ public class PrintConcatenation {
                 "\"Don't tease! Well, and what has been decided about Novosiltsev's\n" +
                 "dispatch? You know everything.\"");
 
-        IConcatenator printWriter = new IPrintWriter();
-        IConcatenator printStream = new IPrintStream();
+        IPrint printWriter = new IPrintWriter();
+        IPrint printStream = new IPrintStream();
 
         IPrintTest test;
         test = new IPrintTest(printWriter);
