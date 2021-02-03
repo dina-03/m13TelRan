@@ -20,7 +20,7 @@ public class ReplaceFileAction extends FileAction {
     protected List<String> perform(List<String> text) {
         List<String> res = new ArrayList<>();
         for (String s : text) {
-            res.add(s.replace(pattern, target));
+            res.add(s.replace(target, pattern));
         }
         return res;
     }

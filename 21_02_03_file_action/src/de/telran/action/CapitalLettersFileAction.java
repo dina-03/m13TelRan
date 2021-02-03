@@ -16,7 +16,7 @@ public class CapitalLettersFileAction extends FileAction {
     protected List<String> perform(List<String> text) {
         List<String> res = new ArrayList<>();
         for (String s : text) {
-            res.add(s.toLowerCase());
+            res.add(s.toUpperCase());
         }
         return res;
     }
