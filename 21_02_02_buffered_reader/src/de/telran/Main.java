@@ -11,13 +11,14 @@ public class Main {
         List<String> fromFile = readFile("text.txt");
         /*System.out.println(fromFile);*/
         // readFromConsole();
-       // writeInFileAndReadFromConsole("text.txt");
+        // writeInFileAndReadFromConsole("text.txt");
         //readFileFromConsoleAndWriteToFile();
         BufferedReadAndWrite bra = new BufferedReadAndWrite();
-      // System.out.println(bra.readFileFromConsoleAndWriteToFile());
-        List<String> text = Arrays.asList("Статический полиморфизм определяется во время компиляции.");
-      // bra.writeToFile("text.txt", text);
-        bra.readFileFromConsoleAndWriteToFile(text);
+        // System.out.println(bra.readFileFromConsoleAndWriteToFile());
+        List<String> text = Arrays.asList("Шерлок Холмс");
+        // bra.writeToFile("text.txt", text);
+         bra.readFileFromConsoleAndWriteToFile();
+       // writeFromConsole();
     }
 
     // reads from file
@@ -53,6 +54,19 @@ public class Main {
                 }
                 System.out.println("goodbye!");
             }
+        }
+    }
+
+    //from Anton
+    public static void writeFromConsole() throws IOException {
+        FileOutputStream fos = new FileOutputStream("text.txt");
+        PrintWriter pw = new PrintWriter(fos);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            String line;
+            while ((line = br.readLine()) != null && !line.equals("exit")) {
+                pw.println(line);
+            }
+            pw.flush();
         }
     }
 }

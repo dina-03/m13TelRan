@@ -1,6 +1,7 @@
 package de.telran;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BufferedReadAndWrite {
@@ -13,11 +14,12 @@ public class BufferedReadAndWrite {
         }
     }
 
-    public void readFileFromConsoleAndWriteToFile(List<String> text) throws IOException {
+    public void readFileFromConsoleAndWriteToFile() throws IOException {
+        List<String> list = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            String filename;
-            while (!(filename = br.readLine()).equals("exit")) {
-                writeToFile(filename, text);
+            String line;
+            while (!(line = br.readLine()).equals("exit")) {
+                list.add(line);
             }
             System.out.println("goodbye!");
         }
