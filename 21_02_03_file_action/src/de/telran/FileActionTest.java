@@ -19,7 +19,7 @@ class FileActionTest {
     @Test
     public void test_replaceFileAction() throws IOException {
         fo.writeList(text, "textReplace.txt");
-        ReplaceFileAction pfa = new ReplaceFileAction(new FileOperations(),"#"," ");
+        ReplaceFileAction pfa = new ReplaceFileAction(new FileOperations()," ","#");
         pfa.handleFile("textReplace.txt");
         List<String> list = Arrays.asList("Далеко-далеко#за#словесными#горами#в#стране#гласных#и#согласных#живут#рыбные#тексты.");
        assertEquals(list,fo.readToList("textReplace.txt"));
