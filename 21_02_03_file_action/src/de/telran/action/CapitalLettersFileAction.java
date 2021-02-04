@@ -13,7 +13,7 @@ public class CapitalLettersFileAction extends FileAction {
     }
 
     @Override
-    protected List<String> perform(List<String> text) {
+    public List<String> perform(List<String> text) {
         List<String> res = new ArrayList<>();
         for (String s : text) {
             res.add(s.toUpperCase());
