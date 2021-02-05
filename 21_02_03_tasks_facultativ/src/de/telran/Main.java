@@ -6,16 +6,14 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        //System.out.println(reversString("крошка"));
-        // findExtraNumber(99);
-        // System.out.println(Arrays.toString(randomArrayWithoutADuplicate(99)));
-        findExtraNumber();
+        System.out.println(reversString("главрыба"));
+        findExtraNumber(99, 100);
     }
 
-    public static void findExtraNumber() {
+    public static void findExtraNumber(int numbers, int size) {
         int sum = 0;
         int idx = -1;
-        int[] arr = randomArrayWithoutADuplicate(99);
+        int[] arr = randomArrayWithoutADuplicate(numbers, size);
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
                 idx = i;
@@ -25,13 +23,13 @@ public class Main {
         }
         int res = (arr.length + 1) * arr.length / 2;
         System.out.println("missing number is: " + (res - sum));
-        System.out.println("arrays: " +Arrays.toString(arr));
+        System.out.println("arrays: " + Arrays.toString(arr));
     }
 
-    public static int[] randomArrayWithoutADuplicate(int number) {
-        int[] res = new int[number];
-        for (int i = 0; i < number; i++) {
-            res[i] = (int) (Math.random() * 100);
+    public static int[] randomArrayWithoutADuplicate(int numbers, int size) {
+        int[] res = new int[numbers];
+        for (int i = 0; i < numbers; i++) {
+            res[i] = (int) (Math.random() * size);
             for (int j = 0; j < i; j++) {
                 if (res[i] == res[j]) {
                     i--;
