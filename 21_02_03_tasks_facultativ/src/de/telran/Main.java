@@ -9,13 +9,13 @@ public class Main {
         //System.out.println(reversString("крошка"));
         // findExtraNumber(99);
         // System.out.println(Arrays.toString(randomArrayWithoutADuplicate(99)));
-        findExtraNumber();
+        findExtraNumber(99);
     }
 
-    public static void findExtraNumber() {
+    public static void findExtraNumber(int n) {
         int sum = 0;
         int idx = -1;
-        int[] arr = randomArrayWithoutADuplicate(99);
+        int[] arr = randomArrayWithoutADuplicate(n);
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
                 idx = i;
