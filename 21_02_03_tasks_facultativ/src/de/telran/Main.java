@@ -25,6 +25,7 @@ public class Main {
         }
         int res = (arr.length + 1) * arr.length / 2;
         System.out.println("missing number is: " + (res - sum));
+        System.out.println("arrays: " +Arrays.toString(arr));
     }
 
     public static int[] randomArrayWithoutADuplicate(int numbers) {
