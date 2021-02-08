@@ -9,6 +9,14 @@ public class Score {
         this.score = score;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public long getScore() {
+        return score;
+    }
+
     @Override
     public String toString() {
         return "name: " + name +
