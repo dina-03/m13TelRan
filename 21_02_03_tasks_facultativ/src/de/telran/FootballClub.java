@@ -1,10 +1,10 @@
 package de.telran;
 //расположить команды по странам в алфавитном порядке и количеству набранных очков
 
-public class FootballClub implements Comparable<FootballClub>{
-    String country;
-    String name;
-    int achievedPoint;
+public class FootballClub implements Comparable<FootballClub> {
+    private final String country;
+    private final String name;
+    private int achievedPoint;
 
     public FootballClub(String country, String name, int achievedPoint) {
         this.country = country;

@@ -1,16 +1,21 @@
 package de.telran;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Arrays;
 
-public class Main {
+public class SolutionMissingNumber {
 
-    public static void main(String[] args) {
-        System.out.println(reversString("главрыба"));
-        findExtraNumber(99, 100);
+    public int solve(int[] numbers) {
+        int n = numbers.length + 1;
+        int completeSum = n * (n + 1) / 2;
+        int incompleteSum = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            incompleteSum += numbers[i];
+        }
+        return completeSum - incompleteSum;
     }
 
-    public static void findExtraNumber(int numbers, int size) {
+    public void findExtraNumber(int numbers, int size) {
         int sum = 0;
         int idx = -1;
         int[] arr = randomArrayWithoutADuplicate(numbers, size);
@@ -26,7 +31,7 @@ public class Main {
         System.out.println("arrays: " + Arrays.toString(arr));
     }
 
-    public static int[] randomArrayWithoutADuplicate(int numbers, int size) {
+    public int[] randomArrayWithoutADuplicate(int numbers, int size) {
         int[] res = new int[numbers];
         for (int i = 0; i < numbers; i++) {
             res[i] = (int) (Math.random() * size);
@@ -37,16 +42,6 @@ public class Main {
             }
         }
         return res;
-    }
-
-
-    public static String reversString(String str) {
-        char[] array = str.toCharArray();
-        String output = "";
-        for (int i = array.length - 1; i >= 0; i--) {
-            output += array[i];
-        }
-        return output;
     }
 
 }
