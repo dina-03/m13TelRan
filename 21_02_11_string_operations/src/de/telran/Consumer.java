@@ -8,9 +8,9 @@ import java.util.concurrent.BlockingQueue;
 
 public class Consumer implements Runnable {
 
-    private static final String SEPARATOR = "#";
-    private static final String WRONG_FORMAT = "wrong format";
-    private static final String WRONG_OPERATION = "wrong operation";
+    public static final String SEPARATOR = "#";
+    public static final String WRONG_FORMAT = "wrong format";
+    public static final String WRONG_OPERATION = "wrong operation";
     private final BlockingQueue<String> queue;
     private final PrintWriter writer;
     private final OperationContext context;
@@ -23,30 +23,33 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        // TODO 1. read a line from the queue
-        // TODO 2. call the method 'handleRawString'
-        // TODO 3. write the resulting string into the 'writer'
-        try {
-            while (true) {
+        boolean isAlive = true;
+        while (isAlive) {
+            try {
                 System.out.println(queue.size());
                 String line = queue.take();
                 String resLine = handleRawString(line);
                 writer.println(resLine);
+            } catch (InterruptedException e) {
+                isAlive = false;
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        }
+
+        //finish the queue
+        while (true) {
+            String line;
+            try {
+                line = queue.remove();
+            } catch (Exception e) {
+                e.printStackTrace();
+                break;
+            }
+            String resLine = handleRawString(line);
+            writer.println(resLine);
         }
     }
 
     String handleRawString(String line) {
-        //TODO complete
-        //TODO if the line is of a wrong format then return it with the postfix '#wrong format' back. 'hello world'->
-        // 'hello world#wrong format'
-        //TODO or 'hello world#upper_case#param'-> 'hello world#upper_case#param#wrong format'
-        //TODO Get the operation by its name.
-        //TODO if the format seems to be correct, but the operation is not found then write to the file the line with
-        // the
-        //TODO postfix '#wrong operation'. E.g. "hello world#opper_case" -> "hello world#opper_case#wrong operation"
 
         String[] result = line.split(SEPARATOR);
 

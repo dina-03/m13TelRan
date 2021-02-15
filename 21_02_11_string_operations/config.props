@@ -1,1 +1,2 @@
-paths=de.operation.UpperCaseSO,de.operation.LowerCaseSO
+paths=de.telran.operation.UpperCaseSO,de.telran.operation.LowerCaseSO
+key=value

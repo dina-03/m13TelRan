@@ -1,5 +1,6 @@
 package de.telran.operation;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,22 +8,25 @@ import java.util.Map;
 public class OperationContext {
     private final Map<String, IStringOperation> operationByName;
 
-    {
-        IStringOperation upperCase = new UpperCaseSO();
-        IStringOperation lowerCase = new LowerCaseSO();
-
+    public OperationContext(List<String> operationPaths) throws ClassNotFoundException, InvocationTargetException,
+            NoSuchMethodException, InstantiationException, IllegalAccessException {
         operationByName = new HashMap<>();
-
-        operationByName.put(upperCase.getName(), upperCase);
-        operationByName.put(lowerCase.getName(), lowerCase);
+        for (String operationPath : operationPaths) {
+            IStringOperation operation = loadOperation(operationPath);
+            operationByName.put(operation.getName(), operation);
+        }
     }
 
+    IStringOperation loadOperation(String operationPath) throws ClassNotFoundException, NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
+        IStringOperation operation = (IStringOperation) Class
+                .forName(operationPath)
+                .getConstructor()
+                .newInstance();
+        return operation;
+    }
 
-    /*public OperationContext(List<String> operationPaths){
-        // TODO compose 'operationByName' by the paths to the necessary operations
-    }*/
-
-    public IStringOperation getOperation(String name){
+    public IStringOperation getOperation(String name) {
         return operationByName.get(name);
     }
 }

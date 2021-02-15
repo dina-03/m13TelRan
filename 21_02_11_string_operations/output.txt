@@ -3,8 +3,8 @@ WORLD
 string##wrong format
 string#wrong format
 hello
-WORLD
 string#get#length#wrong format
+WORLD
 hello
 WORLD
 string#get#length#wrong format

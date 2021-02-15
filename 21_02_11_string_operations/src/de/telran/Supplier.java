@@ -2,7 +2,6 @@ package de.telran;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.concurrent.BlockingQueue;
 
 public class Supplier implements Runnable {
@@ -17,7 +16,6 @@ public class Supplier implements Runnable {
 
     @Override
     public void run() {
-        //TODO read lines and pass every line to the queue via method put
         String line;
         try {
             while ((line = br.readLine()) != null) {
