@@ -43,7 +43,7 @@ public class Main {
 
         Consumer<String> str = System.out::println;
 
-        // BiPredicate<Integer, Integer> biPredicate = (x, x) -> x % 5 == 0; //это никуда не вклеивается!!!
+        BiPredicate<Integer, Integer> biPredicate = (x, y) -> x % 5 == 0;
 
         DoubleUnaryOperator operator1 = Math::sin;
 
