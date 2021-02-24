@@ -1,10 +1,13 @@
 package de.telran;
 
+import java.util.NoSuchElementException;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class IntService {
+
     /**
      * the method determines whether the number is prime
      *
@@ -32,5 +35,28 @@ public class IntService {
                 .filter(divideBy5And3)
                 .sorted()
                 .skip(2);
+    }
+
+    public long factorial(int n) {
+        return LongStream.rangeClosed(1, n)
+                .reduce(1L, (currentResult, currentNum) -> currentResult * currentNum);
+    }
+
+    /**
+     * finds sum of odd numbers between the two.
+     *
+     * @param a
+     * @param b
+     * @return
+     * @throws java.util.NoSuchElementException
+     *         if no odd numbers found between a and b, or a > b
+     */
+    public long sumOddNumbersBetween(int a, int b) {
+        return LongStream.rangeClosed(a, b)
+                .filter(num -> num % 2 == 1)
+                .reduce(Long::sum)
+                .orElseThrow(NoSuchElementException::new);
+        //.reduce((res, num) -> res + num)
+        //.orElseThrow(() -> new NoSuchElementException());
     }
 }
