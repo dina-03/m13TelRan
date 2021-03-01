@@ -44,7 +44,7 @@ public class MedianElementCollector implements Collector<Integer, List<Integer>,
 
     @Override
     public Set<Characteristics> characteristics() {
-        return Collections.emptySet();
-       // return Collections.unmodifiableSet(Set.of(Collector.Characteristics.CONCURRENT));
+        //return Collections.emptySet();
+        return Collections.unmodifiableSet(Set.of(Collector.Characteristics.CONCURRENT));
     }
 }
