@@ -7,11 +7,6 @@ import java.time.temporal.ChronoUnit;
 public class MyBirthday {
 
     public static void main(String[] args) {
-        /*LocalDateTime myGD = LocalDateTime.of(1973, 02, 15, 16, 00);
-        System.out.println(myGD);
-        LocalDateTime localMyGD = myGD.with(ChronoField.YEAR, 2021);
-        System.out.println(localMyGD);
-        System.out.println(localMyGD.get(ChronoField.DAY_OF_YEAR));*/
 
         LocalDate birthday = LocalDate.of(1900, 2, 15);
         LocalDate localDateBirthday = birthday.withYear(2021);
