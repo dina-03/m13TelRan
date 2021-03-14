@@ -9,7 +9,7 @@ import java.net.InetAddress;
 
 public class Main {
 
-    private final static int UDP_SERVER_PORT = 3000;
+    private final static int UDP_SERVER_PORT = 4000;
     private final static String UDP_SERVER_HOST = "localhost";
     private final static int PACKET_SIZE = 1024;
 
