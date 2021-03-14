@@ -5,12 +5,12 @@ import de.telran.server.ServerPriority;
 
 import java.net.DatagramPacket;
 
-public class Balancer implements Runnable {
+public class BalancerBalancer implements Runnable {
 
     private DatagramPacket packetIn;
     private ServerPriority servers;
 
-    public Balancer(DatagramPacket datagramPacket, ServerPriority servers) {
+    public BalancerBalancer(DatagramPacket datagramPacket, ServerPriority servers) {
         this.packetIn = datagramPacket;
         this.servers = servers;
     }
