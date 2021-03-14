@@ -8,6 +8,10 @@ public class Main {
 
     public static void main(String[] args) {
         ServerPriority servers = new ServerPriority();
+        LoadServer loadServer = new LoadServer(servers);
 
+        new UdpBalancerListener(servers).start();
+
+        new Thread(loadServer).start();
     }
 }
