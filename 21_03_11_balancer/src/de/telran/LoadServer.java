@@ -8,7 +8,7 @@ import java.net.*;
 
 public class LoadServer implements Runnable{
 
-    private static final int  EXTERNAL_SERVER_PORT = 4000;
+    private static final int  EXTERNAL_SERVER_PORT = 3000;
     private static final String EXTERNAL_HOST = "localhost";
     private ServerPriority servers;
 
