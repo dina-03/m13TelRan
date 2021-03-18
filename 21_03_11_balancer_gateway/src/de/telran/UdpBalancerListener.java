@@ -8,7 +8,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
-public class UdpBalancerListener implements Runnable{
+public class UdpBalancerListener implements Runnable {
     private static final int PACKET_SIZE = 1024;
     ServerSource serverSource;
     int udpFromBalancerPort;

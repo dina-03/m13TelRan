@@ -19,14 +19,14 @@ public class TcpOuterListener implements Runnable {
 
     @Override
     public void run() {
-        ServerSocket serverSocket = null;
+        ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(tcpOuterPort);
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
-        ExecutorService executor = Executors.newFixedThreadPool(20);
+        ExecutorService executor = Executors.newFixedThreadPool(50);
 
         while (true) {
             Socket socket = null;

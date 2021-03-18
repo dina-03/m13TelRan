@@ -33,9 +33,9 @@ public class WorkloadReporter implements Runnable {
             DatagramSocket socket = new DatagramSocket();
 
             while (true) {
-                Thread.sleep(period);
+               /* Thread.sleep(period);*/
 
-                String message = internalHost + internalPort;
+                String message = internalHost + ", " + internalPort;
                 byte[] dataOut = message.getBytes();
                 DatagramPacket packet = new DatagramPacket(dataOut,
                         dataOut.length,
@@ -44,13 +44,10 @@ public class WorkloadReporter implements Runnable {
                 );
 
                 socket.send(packet);
+                Thread.sleep(period);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -42,6 +42,8 @@ public class ServerProxyTask implements Runnable {
              BufferedReader fromServer = new BufferedReader(new InputStreamReader(socketToServer.getInputStream()));
         ) {
             String lineFromClient;
+
+            //pipe from client to server
             while ((lineFromClient = fromClient.readLine()) != null) {
                 toServer.println(lineFromClient);
                 String lineFromServer = fromServer.readLine();

@@ -1,7 +1,5 @@
 package de.telran;
 
-import de.telran.server.IServerMap;
-import de.telran.server.ServerList;
 import java.io.IOException;
 
 public class Main {
@@ -18,12 +16,12 @@ public class Main {
         int udpServerPort = Integer.parseInt(properties.getProperty(UDP_FROM_SERVER_PORT_KEY));
 
         IServerMap serverMap = new ServerList();
-        UdpBalancerListener udpServerListener = new UdpBalancerListener(serverMap, udpServerPort);
+        UdpServerListener udpServerListener = new UdpServerListener(serverMap, udpServerPort);
         new Thread(udpServerListener).start();
 
         int udpGatewayPort = Integer.parseInt(properties.getProperty(UDP_TO_GATEWAY_PORT_KEY));
         String gatewayHost = properties.getProperty(GATEWAY_HOST_KEY);
-        GatewaySender udpGatewaySender = new GatewaySender(gatewayHost, serverMap, udpGatewayPort, 100);
+        UdpGatewaySender udpGatewaySender = new UdpGatewaySender(gatewayHost, serverMap, udpGatewayPort, 100);
         new Thread(udpGatewaySender).start();
 
         Cleaner cleaner = new Cleaner(serverMap, 1000);

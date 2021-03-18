@@ -1,4 +1,4 @@
-package de.telran.server;
+package de.telran;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ServerList implements IServerMap{
-
     List<ServerData> source = new ArrayList<>();
 
     @Override
@@ -28,7 +27,7 @@ public class ServerList implements IServerMap{
     @Override
     public synchronized void removeUnused(int millis) {
         source.removeIf(serverData ->
-                ChronoUnit.MILLIS.between(serverData.getDateTime(), LocalDateTime.now()) > millis
+                ChronoUnit.MILLIS.between(serverData.getTimeLastUpdate(), LocalDateTime.now()) > millis
         );
     }
 }
