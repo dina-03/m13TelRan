@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class OrderFlow implements ApplicationRunner {
     List<Auto> simpleAutos;
     Auto bentley;
