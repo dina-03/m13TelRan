@@ -1,5 +1,6 @@
 package de.telran.autos.config;
 
+import de.telran.autos.OrderFlow;
 import de.telran.autos.entity.Auto;
 import de.telran.autos.service.AutoService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Configuration
 public class Config {
 
@@ -28,4 +31,8 @@ public class Config {
         return new Auto(3, "Bentley", "black", LocalDate.of(2005, 6, 25), 5000);
     }
 
+    @Bean
+    public OrderFlow orderFlow(@Qualifier("simpleAutos") List<Auto> simpleAutos, Auto bentley, AutoService autoService) {
+        return new OrderFlow(simpleAutos, bentley, autoService);
+    }
 }

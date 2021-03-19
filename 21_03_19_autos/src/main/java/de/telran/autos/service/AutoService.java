@@ -8,8 +8,6 @@ import java.util.List;
 @Service
 public class AutoService {
 
-  //  AutoGarage garage;
-
     public void paint(Auto auto, String color) {
         auto.setColor(color);
     }
