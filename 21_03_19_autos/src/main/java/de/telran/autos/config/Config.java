@@ -17,7 +17,7 @@ public class Config {
     @Bean
     @Qualifier("simpleAutos")
     public Auto opel() {
-        return new Auto(1, "Opel", "grey", LocalDate.of(2015, 1, 1), 50000);
+        return new Auto(3, "Opel", "grey", LocalDate.of(2015, 1, 1), 50000);
     }
 
     @Bean
@@ -28,7 +28,7 @@ public class Config {
 
     @Bean
     public Auto bentley() {
-        return new Auto(3, "Bentley", "black", LocalDate.of(2005, 6, 25), 5000);
+        return new Auto(1, "Bentley", "black", LocalDate.of(2005, 6, 25), 5000);
     }
 
     @Bean
