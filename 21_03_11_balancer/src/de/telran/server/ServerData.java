@@ -7,13 +7,12 @@ public class ServerData {
     private String host;
     private int port;
     private int load;
-    private LocalDateTime dateTime;
+    private LocalDateTime dateTime = LocalDateTime.now();
 
     public ServerData(String host, int port, int load) {
         this.host = host;
         this.port = port;
         this.load = load;
-        dateTime = LocalDateTime.now();
     }
 
     public String getHost() {
@@ -38,12 +37,10 @@ public class ServerData {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (!(o instanceof ServerData)) return false;
         ServerData that = (ServerData) o;
-        return port == that.port && Objects.equals(host, that.host);
+        return Objects.equals(host, that.host) && Objects.equals(port, that.port);
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.net.SocketException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class UdpBalancerListener implements Runnable {
+public class UdpServerListener implements Runnable {
    /* private static final int PACKET_SIZE = 1024;
     private static final int UDP_PORT = 4000;
 
@@ -43,7 +43,7 @@ public class UdpBalancerListener implements Runnable {
     IServerMap serverMap;
     int udpFromServerPort;
 
-    public UdpBalancerListener(IServerMap serverMap, int udpFromServerPort) {
+    public UdpServerListener(IServerMap serverMap, int udpFromServerPort) {
         this.serverMap = serverMap;
         this.udpFromServerPort = udpFromServerPort;
     }

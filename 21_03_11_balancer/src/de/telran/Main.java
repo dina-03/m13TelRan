@@ -18,7 +18,7 @@ public class Main {
         int udpServerPort = Integer.parseInt(properties.getProperty(UDP_FROM_SERVER_PORT_KEY));
 
         IServerMap serverMap = new ServerList();
-        UdpBalancerListener udpServerListener = new UdpBalancerListener(serverMap, udpServerPort);
+        UdpServerListener udpServerListener = new UdpServerListener(serverMap, udpServerPort);
         new Thread(udpServerListener).start();
 
         int udpGatewayPort = Integer.parseInt(properties.getProperty(UDP_TO_GATEWAY_PORT_KEY));
